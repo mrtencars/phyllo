@@ -546,6 +546,66 @@ video {
   height: auto;
 }
 
+#main {
+  width: 100%;
+}
+
+@media (min-width: 640px) {
+  #main {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  #main {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  #main {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  #main {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  #main {
+    max-width: 1536px;
+  }
+}
+
+#main {
+  --tw-bg-opacity: 1;
+  background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem;
+}
+
+h1 {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 0.5rem;
+}
+
 .container {
   width: 100%;
 }

@@ -3,7 +3,7 @@
 		<meta charset="utf-8">
 		<title>Phyllotaxis</title>
 		<script type="text/javascript" src="./js/Cindy.js"></script>
-		<link rel="stylesheet" href="./css/tailwind.css">
+		<link rel="stylesheet" href="./css/styles.css">
 		<link rel="stylesheet" href="./css/CindyJS.css">
 	   
 		<!-- MathJax -->
@@ -395,53 +395,56 @@
 	</script>
 	 
 	</head>
-	<body>
-	<div id="intro">
-		<h1>Phyllotaxis</h1>
-		<p>
-			In diesem Applet soll das Wachstum von Blüten und Knospen dargestellt werden.
-		</p>
-	</div>
-	<div id="modell">
-		<h2>1. Das Modell</h2>        
-		<p>
-			Wir gehen im folgenden von 2 Eigenschaften aus:
-			<ol>
-				<li>Bei jeder neuen Knospe dreht sich die Konfiguration um einen bestimmten Winkel \( \phi_0 \), genannt <i>Divergenzwinkel</i>.</li>
-				<li>Bei jeder neuen Knospe wächst die Konfiguration um einen gewissen radialen Zuwachs \( r_0 \) nach außen. </li>
-			</ol>
-		<p>
-	</div>
-	<div id="zylinderspiralen">
-		<h2>2. Zylinder und Spiralen</h2>
-		<p>
-			Im ersten Applet sehen wir links ein zylinderförmiges Koordinatensystem: Die x-Achse entspricht dem Drehwinkel und die y-Achse entspricht dem Radius, also dem Abstand einer Knospe zum Mittelpunkt. Das Koordinatensystem hat eine Besonderheit: Weil ein Winkel von 180° genau einem Winkel von  -180° entspricht, bleiben alle Punkte immer zwischen diesen beiden Winkeln. Winkel  \(\phi=180°+x\) entsprechen Winkel der Form \(\phi=-180°+x\).
-		</p>
-		<p>
-			In der rechten Hälfte sind dann die entsprechenden Punkte bzw. die Punktkonfiguration in der Ebene zu sehen. In diesem Fall sind immer nur Punkte mit einem Radius kleiner als 5 zu sehen.
-			Genau genommen wird ein Punkt im Zylinder mit den Koordinaten \( \left(\phi,r \right) \) auf 
-			$$ \left(\phi,r \right) \mapsto z = r\cdot e^{i\cdot\phi}$$
-			in der (komplexen) Ebene abgebildet. Die Koordinaten \( \left(\phi,r \right) \) werden auch <i>Polarkoordinaten</i> von \(z\) genannt.
-		</p>
-		<h3>2.1. Erste Versuche</h3>
-		<p>
-			Indem man im Zylinder den roten Punkt bewegt, kann man den Divergenzwinkel \(\phi_0\) und den radialen Zuwachs \(r_0\) einstellen. Es entstehen verschiedene Muster in der Ebene.
-		</p>
-		<div class="aufgabe btn">
+	<body class="bg-blue-800">
+	<div id="main">
+		<div id="intro">
+			<h1>Phyllotaxis</h1>
 			<p>
-				<ol>
-					<li>Experimentiere mit Divergenzwinkel und radialem Zuwachs. Achte dabei auf die Form und die Anzahl von Spiralen.</li>
-					<li>Kannst Du schon Aussagen zur Abhängigkeit der Form und die Anzahl der Spiralen von Divergenzwinkel und radialem Zuwachs machen?</li>
-				</ol>
+				In diesem Applet soll das Wachstum von Blüten und Knospen dargestellt werden.
 			</p>
 		</div>
-		<div  id="CSCanvas"></div>
-	
-		<p>
-			Divergenzwinkel \( \phi_0 \) (in Grad):&nbsp;<input type="text" id="winkel" value="45">
-			<button onclick="cdy.evokeCS('A.x=' + document.getElementById('winkel').value + '/90;')" type="button">Setzen</button>
-			radialer Zuwachs \(r_0\):&nbsp;<input type="text" id="radius0" value="0.125">
-			<button onclick="cdy.evokeCS('A.y=' + document.getElementById('radius0').value + '*4;')" type="button">Setzen</button>
-		</p>
+		<div id="modell">
+			<h2>1. Das Modell</h2>        
+			<p>
+				Wir gehen im folgenden von 2 Eigenschaften aus:
+				<ol>
+					<li>Bei jeder neuen Knospe dreht sich die Konfiguration um einen bestimmten Winkel \( \phi_0 \), genannt <i>Divergenzwinkel</i>.</li>
+					<li>Bei jeder neuen Knospe wächst die Konfiguration um einen gewissen radialen Zuwachs \( r_0 \) nach außen. </li>
+				</ol>
+			<p>
+		</div>
+		<div id="zylinderspiralen">
+			<h2>2. Zylinder und Spiralen</h2>
+			<p>
+				Im ersten Applet sehen wir links ein zylinderförmiges Koordinatensystem: Die x-Achse entspricht dem Drehwinkel und die y-Achse entspricht dem Radius, also dem Abstand einer Knospe zum Mittelpunkt. Das Koordinatensystem hat eine Besonderheit: Weil ein Winkel von 180° genau einem Winkel von  -180° entspricht, bleiben alle Punkte immer zwischen diesen beiden Winkeln. Winkel  \(\phi=180°+x\) entsprechen Winkel der Form \(\phi=-180°+x\).
+			</p>
+			<p>
+				In der rechten Hälfte sind dann die entsprechenden Punkte bzw. die Punktkonfiguration in der Ebene zu sehen. In diesem Fall sind immer nur Punkte mit einem Radius kleiner als 5 zu sehen.
+				Genau genommen wird ein Punkt im Zylinder mit den Koordinaten \( \left(\phi,r \right) \) auf 
+				$$ \left(\phi,r \right) \mapsto z = r\cdot e^{i\cdot\phi}$$
+				in der (komplexen) Ebene abgebildet. Die Koordinaten \( \left(\phi,r \right) \) werden auch <i>Polarkoordinaten</i> von \(z\) genannt.
+			</p>
+			<h3>2.1. Erste Versuche</h3>
+			<p>
+				Indem man im Zylinder den roten Punkt bewegt, kann man den Divergenzwinkel \(\phi_0\) und den radialen Zuwachs \(r_0\) einstellen. Es entstehen verschiedene Muster in der Ebene.
+			</p>
+			<div class="aufgabe btn">
+				<p>
+					<ol>
+						<li>Experimentiere mit Divergenzwinkel und radialem Zuwachs. Achte dabei auf die Form und die Anzahl von Spiralen.</li>
+						<li>Kannst Du schon Aussagen zur Abhängigkeit der Form und die Anzahl der Spiralen von Divergenzwinkel und radialem Zuwachs machen?</li>
+					</ol>
+				</p>
+			</div>
+			<div  id="CSCanvas"></div>
+		
+			<p>
+				Divergenzwinkel \( \phi_0 \) (in Grad):&nbsp;<input type="text" id="winkel" value="45">
+				<button onclick="cdy.evokeCS('A.x=' + document.getElementById('winkel').value + '/90;')" type="button">Setzen</button>
+				radialer Zuwachs \(r_0\):&nbsp;<input type="text" id="radius0" value="0.125">
+				<button onclick="cdy.evokeCS('A.y=' + document.getElementById('radius0').value + '*4;')" type="button">Setzen</button>
+			</p>
+		</div>
+	</div>
 	</body>
 	</html>
