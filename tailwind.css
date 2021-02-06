@@ -4,7 +4,7 @@
 
 @layer base{
 	
-	#main {
+	main {
 		@apply container bg-white mx-auto p-2;
 	}
 	

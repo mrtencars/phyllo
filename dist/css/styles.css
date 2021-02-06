@@ -517,41 +517,41 @@ video {
   height: auto;
 }
 
-#main {
+main {
   width: 100%;
 }
 
 @media (min-width: 640px) {
-  #main {
+  main {
     max-width: 640px;
   }
 }
 
 @media (min-width: 768px) {
-  #main {
+  main {
     max-width: 768px;
   }
 }
 
 @media (min-width: 1024px) {
-  #main {
+  main {
     max-width: 1024px;
   }
 }
 
 @media (min-width: 1280px) {
-  #main {
+  main {
     max-width: 1280px;
   }
 }
 
 @media (min-width: 1536px) {
-  #main {
+  main {
     max-width: 1536px;
   }
 }
 
-#main {
+main {
   --tw-bg-opacity: 1;
   background-color: rgba(255, 255, 255, var(--tw-bg-opacity));
   margin-left: auto;
