@@ -2,19 +2,29 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base{
-	
+@layer base {
+
 	main {
-		@apply container bg-white mx-auto p-2;
+		@apply container bg-white mx-auto p-2 align-middle;
 	}
-	
+
 	h1 {
-		@apply mb-4 text-5xl;	
+		@apply mb-4 text-5xl;
 	}
+
 	h2 {
 		@apply mb-3 text-3xl;
 	}
+
 	h3 {
-		@apply mb-2 text-2xl;	
+		@apply mb-2 text-2xl;
+	}
+
+	.aufgabe {
+		@apply bg-aufgabe
+	}
+
+	div.aufgabe ol {
+		@apply list-decimal list-inside;
 	}
 }

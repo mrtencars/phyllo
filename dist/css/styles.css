@@ -557,6 +557,7 @@ main {
   margin-left: auto;
   margin-right: auto;
   padding: 0.5rem;
+  vertical-align: middle;
 }
 
 h1 {
@@ -575,6 +576,16 @@ h3 {
   font-size: 1.5rem;
   line-height: 2rem;
   margin-bottom: 0.5rem;
+}
+
+.aufgabe {
+  --tw-bg-opacity: 1;
+  background-color: rgba(52, 83, 65, var(--tw-bg-opacity))
+}
+
+div.aufgabe ol {
+  list-style-position: inside;
+  list-style-type: decimal;
 }
 
 .container {

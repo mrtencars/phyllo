@@ -8,13 +8,13 @@
 		
 		<!-- CindyJS -->
 		<script type="text/javascript" src="./js/Cindy.js"></script>
-		<link rel="stylesheet" href="./css/CindyJS.css">
+		<link rel="stylesheet" href="./css/CIndyJS.css">
 	   
 		<!-- MathJax -->
 		<script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 		<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 		<script type="text/x-mathjax-config">
-		MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
 		</script>
 	
 	<script id='csinit' type='text/x-cindyscript'>
@@ -432,7 +432,8 @@
 				<p>
 					Indem man im Zylinder den roten Punkt bewegt, kann man den Divergenzwinkel \(\phi_0\) und den radialen Zuwachs \(r_0\) einstellen. Es entstehen verschiedene Muster in der Ebene.
 				</p>
-				<div class="aufgabe btn">
+				<div class="aufgabe">
+					<h4>Aufgabe 1</h4>
 					<p>
 						<ol>
 							<li>Experimentiere mit Divergenzwinkel und radialem Zuwachs. Achte dabei auf die Form und die Anzahl von Spiralen.</li>
@@ -441,7 +442,6 @@
 					</p>
 				</div>
 				<div  id="CSCanvas"></div>
-			
 				<p>
 					Divergenzwinkel \( \phi_0 \) (in Grad):&nbsp;<input type="text" id="winkel" value="45">
 					<button onclick="cdy.evokeCS('A.x=' + document.getElementById('winkel').value + '/90;')" type="button">Setzen</button>
