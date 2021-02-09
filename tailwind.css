@@ -20,11 +20,23 @@
 		@apply mb-2 text-2xl;
 	}
 
-	.aufgabe {
-		@apply bg-aufgabe
+	h4 {
+		@apply mb-1 text-lg text-black italic font-bold;
 	}
 
-	div.aufgabe ol {
+	p {
+		@apply mb-1;
+	}
+
+	ol {
 		@apply list-decimal list-inside;
+	}
+
+	ul {
+		@apply list-disc list-inside;
+	}
+
+	.aufgabe {
+		@apply bg-aufgabe mb-4 p-2;
 	}
 }
