@@ -473,11 +473,17 @@
         </div>
 		<div x-data="{ isOpen: false }" class="antwort">
 			<button @click="isOpen = !isOpen">
-				Lösungen
+				Hinweise:
 			</button>
-			<p x-show="isOpen">
-				Wenn man genau hinschaut, dann ...
-			</p>
+			<ul x-show="isOpen">
+				<li>
+					Die Anzahl und Form der Spiralen hängt anscheinend nicht vom radialen Zuwachs ab.
+				</li>
+				<li>
+					Für manche Winkel gibt drehen sich die Spiralen im Uhrzeigersinn, für andere drehen sie sich
+					entgegengesetzt.
+				</li>
+			</ul>
 		</div>
         <div id="CSCanvas"></div>
         <p>
