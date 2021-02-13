@@ -367,7 +367,7 @@
     </script>
 
     <script type="text/javascript">
-        var gslp = [
+        const gslp = [
             {name: "A", type: "Free", pinned: false, size: 5, pos: [0.5, 0.5]},
             {name: "B", type: "Free", visible: false, pinned: false, size: 3, pos: [4, -.5]},
             {name: "C", type: "Free", visible: false, pinned: false, size: 3, pos: [12, -.5]},
@@ -387,7 +387,7 @@
             }
         ];
 
-        var cdy = CindyJS({
+        const cdy = CindyJS({
             ports: [{
                 id: "CSCanvas",
                 width: 800,
@@ -396,7 +396,7 @@
                 transform: [{
                     visibleRect: [-2.5, 10, 12.5, -1]
                 }],
-                background: "rgb(255,255,255)"
+                background: "rgb(250,250,250)"
             }],
             scripts: "cs*",
             language: "de",
@@ -422,21 +422,35 @@
             In diesem Applet soll das Wachstum von Blüten und Knospen dargestellt werden.
 		</p>
     </section>
+
     <section id="modell">
-        <h2>1. Das Modell</h2>
+        <h2>Das Modell</h2>
         <p>
             Wir gehen im folgenden von 2 Eigenschaften aus:
 		</p>
 		<ol>
-			<li>Bei jeder neuen Knospe dreht sich die Konfiguration um einen bestim‚mten Winkel \( \phi_0 \), genannt <i>Divergenzwinkel</i>.
+			<li>
+                Bei jeder neuen Knospe dreht sich die Konfiguration um einen bestim‚mten Winkel \( \phi_0 \),
+                genannt <i>Divergenzwinkel</i>.
 			</li>
-			<li>Bei jeder neuen Knospe wächst die Konfiguration um einen gewissen radialen Zuwachs \( r_0 \) nach
+			<li>
+                Bei jeder neuen Knospe wächst die Konfiguration um einen gewissen radialen Zuwachs \( r_0 \) nach
 				außen.
 			</li>
 		</ol>
+        <p>
+            Damit kann man sagen, dass die Knospen auf einer Spirale angeordnet sind.
+        </p>
+        <section id="secSpiraleZylinder">
+            <h3>Von der Spirale zum Zylinder</h3>
+            <p>
+               Wir betrachten auf der linken Seite eine
+            </p>
+        </section>
     </section>
+
     <section id="zylinderspiralen">
-        <h2>2. Zylinder und Spiralen</h2>
+        <h2>Zylinder und Spiralen</h2>
         <p>
             Im ersten Applet sehen wir links ein zylinderförmiges Koordinatensystem: Die x-Achse entspricht dem
             Drehwinkel und die y-Achse entspricht dem Radius, also dem Abstand einer Knospe zum Mittelpunkt. Das
@@ -453,7 +467,7 @@
             von \(z\) genannt.
 		</p>
 
-        <h3>2.1. Erste Versuche</h3>
+        <h3>Erste Versuche</h3>
         <p>
             Indem man im Zylinder den roten Punkt bewegt, kann man den Divergenzwinkel \(\phi_0\) und den radialen
             Zuwachs \(r_0\) einstellen. Es entstehen verschiedene Muster in der Ebene.

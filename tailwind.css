@@ -3,6 +3,9 @@
 @tailwind utilities;
 
 @layer base {
+	body {
+		counter-reset:section;
+	}
 
 	main {
 		@apply container bg-white mx-auto p-2 align-middle;
@@ -12,8 +15,21 @@
 		@apply mb-4 text-5xl;
 	}
 
+	h2:before
+	{
+		counter-increment:section;
+		content: counter(section) ". ";
+	}
+
 	h2 {
 		@apply mb-3 text-3xl;
+		counter-reset:subsection;
+	}
+
+	h3:before
+	{
+		counter-increment:subsection;
+		content: counter(section) "." counter(subsection) ". ";
 	}
 
 	h3 {

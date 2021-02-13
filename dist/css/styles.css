@@ -517,6 +517,10 @@ video {
   height: auto;
 }
 
+body {
+  counter-reset:section;
+}
+
 main {
   width: 100%;
 }
@@ -566,10 +570,23 @@ h1 {
   margin-bottom: 1rem;
 }
 
+h2:before
+	{
+  counter-increment:section;
+  content: counter(section) ". ";
+}
+
 h2 {
   font-size: 1.875rem;
   line-height: 2.25rem;
   margin-bottom: 0.75rem;
+  counter-reset:subsection;
+}
+
+h3:before
+	{
+  counter-increment:subsection;
+  content: counter(section) "." counter(subsection) ". ";
 }
 
 h3 {
