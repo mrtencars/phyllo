@@ -6,20 +6,19 @@
     <!-- Styles -->
     <link rel="stylesheet" href="./css/styles.css">
 
-    <!-- CindyJS -->
-    <script type="text/javascript" src="./js/Cindy.js"></script>
-    <link rel="stylesheet" href="./css/CIndyJS.css">
-
     <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">
 			MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
-
     </script>
 
     <!-- Alpine.js -->
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+
+    <!-- CindyJS -->
+    <script type="text/javascript" src="./js/Cindy.js"></script>
+    <link rel="stylesheet" href="./css/CIndyJS.css">
 
     <script id='csinit' type='text/x-cindyscript'>
 		/*** SYSOUTPUT ***/
@@ -295,26 +294,24 @@
 		createimage("Plane",500,500);
 		createimage("Cylinder",100,500);
 		createimage("SysOutput",700,100);
-
     </script>
+</head>
+<body class="bg-blue-800">
+<main>
 
-    <script id='csdraw' type='text/x-cindyscript'>
-		strOut = text(mouseInArea) + " " ;
+    <section id="intro">
+        <h1>Phyllotaxis</h1>
+        <p>
+            In diesem Applet soll das Wachstum von Blüten und Knospen dargestellt werden.
+		</p>
+    </section>
+
+    <script id="spizyldraw" type='text/x-cindyscript'>
 		varDoubleScale = 0.5+0.5*|D-B|/|C-B|;
 		lattice = newCLattice(A.x/4,A.y/4);
 		cylinder = createCLatticePointsH(lattice,5,1);
-		if(baseIndex > 1 & ButtonSpirals.pressed,
-			baseVector = gauss((cylinder_(baseIndex+1)).z);
-			drawLatticeCylinder(cylinder);
-			cylinder = colorLattice(cylinder);
-			drawLatticeCylinder(cylinder);
-			drawArrow([0,0],baseVector,(0,0,0),0.5)
-		);
-	
-		//cylinder = colorCTPoint(cylinder,pointMouse,0.02,(1,1,0));
-		//spiral = createSpiralR(lattice,scale,5);
 		spiral = apply(cylinder,ctpoint,CylinderToPlane(ctpoint));
-	
+
 		xAxis = [
 			newAnnotation([-2,0],"-180°"),
 			newAnnotation([0,0],"O"),
@@ -322,19 +319,15 @@
 			newAnnotation([4,0],"360°")
 		];
 		drawAxis("horizontal",xAxis,2,14,0.05,0.3,(0,0,0));
-	
+
 		drawtext(A.xy+[0.1,0.1],text(360°*A.x/4));
-	
+
 		clearimage("Plane");
 		canvas([-5,-5],[5,-5],"Plane",
 			drawLattice(spiral,9,0.0570,5);
-			if(baseIndex>1 & ButtonSpirals.pressed,
-				//drawSubspacesPlane(spiral);
-				drawSubspaceSpirals(cylinder,5)
-			);
 		);
 		drawimage([2.5,0],[12.5,0],"Plane");
-	
+
 		clearimage("Cylinder");
 		canvas([-0.5,0],[0.5,0],"Cylinder",
 			h = 5; // height of the cylinder
@@ -342,54 +335,21 @@
 			drawCylinder(h,2);
 		);
 		drawimage([-2,0],[2,0],"Cylinder");
-	
-		clearimage("SysOutput");
-		canvas([0,0],[5,0],"SysOutput",
-			strOut = strOut + " Mouse: " + text(baseVector);
-			//drawtext([0,0],strOut,size->8);
-		);
-		drawimage([-1,-1],[13,-1],"SysOutput");
-	
-
-    </script>
-
-    <script id='csmousedown' type='text/x-cindyscript'>
-		pointMouse = mouse()/4;
-		mouseInArea = isInArea([-0.5,3,0.5,0],pointMouse);
-		if(mouseInArea,
-			boolMouseDown = true;
-			//baseVector = gauss((closestCTPoint(cylinder,pointMouse)).z);
-			index = closestCTPoint(cylinder,pointMouse).idx;
-			if(index>1, baseIndex = index);
-		);
-	
-
     </script>
 
     <script type="text/javascript">
-        const gslp = [
+        const spizylgeo = [
             {name: "A", type: "Free", pinned: false, size: 5, pos: [0.5, 0.5]},
             {name: "B", type: "Free", visible: false, pinned: false, size: 3, pos: [4, -.5]},
             {name: "C", type: "Free", visible: false, pinned: false, size: 3, pos: [12, -.5]},
             {name: "a", type: "Segment", args: ["C", "B"], color: [0, 0, 0], labeled: false},
             {name: "D", type: "PointOnSegment", pinned: false, size: 3, args: ["a"], pos: [11, -1]},
-            {name: "Text0", type: "Text", color: [0, 0, 0], size: 18, text: "Vergrößerung", pos: [7, -1]},
-            {name: "Text1", type: "Text", color: [0, 0, 0], size: 18, text: "Winkel", pos: [9.5, 0.1]},
-            {name: "Text2", type: "Text", color: [0, 0, 0], size: 18, text: "Radius", pos: [0.1, 9.7]},
-            {
-                name: "ButtonSpirals",
-                type: "ToggleButton",
-                pos: [0.5, -1],
-                color: [0.0, 0.0, 0.0],
-                fillcolor: [0.0, 0.0, 1.0],
-                fillalpha: 0.3,
-                text: "Farbspiralen"
-            }
+            {name: "Text0", type: "Text", color: [0, 0, 0], size: 18, text: "Vergrößerung", pos: [7, -1]}
         ];
 
-        const cdy = CindyJS({
+        const spizylcdy = CindyJS({
             ports: [{
-                id: "CSCanvas",
+                id: "spizylCanvas",
                 width: 800,
                 axes: true,
                 height: 600,
@@ -398,7 +358,8 @@
                 }],
                 background: "rgb(250,250,250)"
             }],
-            scripts: "cs*",
+            drawscript: "spizyldraw",
+            initscript: "csinit",
             language: "de",
             autoplay: false,
             defaultAppearance: {
@@ -409,19 +370,9 @@
                 textsize: 12.0
             },
             use: ["katex"],
-            geometry: gslp
+            geometry: spizylgeo
         });
     </script>
-
-</head>
-<body class="bg-blue-800">
-<main>
-    <section id="intro">
-        <h1>Phyllotaxis</h1>
-        <p>
-            In diesem Applet soll das Wachstum von Blüten und Knospen dargestellt werden.
-		</p>
-    </section>
 
     <section id="modell">
         <h2>Das Modell</h2>
@@ -446,8 +397,122 @@
             <p>
                Wir betrachten auf der linken Seite eine
             </p>
+            <div id="spizylCanvas"></div>
         </section>
     </section>
+
+    <script id='zylspidraw' type='text/x-cindyscript'>
+		strOut = text(mouseInArea) + " " ;
+		varDoubleScale = 0.5+0.5*|D-B|/|C-B|;
+		lattice = newCLattice(A.x/4,A.y/4);
+		cylinder = createCLatticePointsH(lattice,5,1);
+		if(baseIndex > 1 & ButtonSpirals.pressed,
+			baseVector = gauss((cylinder_(baseIndex+1)).z);
+			drawLatticeCylinder(cylinder);
+			cylinder = colorLattice(cylinder);
+			drawLatticeCylinder(cylinder);
+			drawArrow([0,0],baseVector,(0,0,0),0.5)
+		);
+
+		//cylinder = colorCTPoint(cylinder,pointMouse,0.02,(1,1,0));
+		//spiral = createSpiralR(lattice,scale,5);
+		spiral = apply(cylinder,ctpoint,CylinderToPlane(ctpoint));
+
+		xAxis = [
+			newAnnotation([-2,0],"-180°"),
+			newAnnotation([0,0],"O"),
+			newAnnotation([2,0],"180°"),
+			newAnnotation([4,0],"360°")
+		];
+		drawAxis("horizontal",xAxis,2,14,0.05,0.3,(0,0,0));
+
+		drawtext(A.xy+[0.1,0.1],text(360°*A.x/4));
+
+		clearimage("Plane");
+		canvas([-5,-5],[5,-5],"Plane",
+			drawLattice(spiral,9,0.0570,5);
+			if(baseIndex>1 & ButtonSpirals.pressed,
+				//drawSubspacesPlane(spiral);
+				drawSubspaceSpirals(cylinder,5)
+			);
+		);
+		drawimage([2.5,0],[12.5,0],"Plane");
+
+		clearimage("Cylinder");
+		canvas([-0.5,0],[0.5,0],"Cylinder",
+			h = 5; // height of the cylinder
+			drawLattice(cylinder,h,0.05,1.1);
+			drawCylinder(h,2);
+		);
+		drawimage([-2,0],[2,0],"Cylinder");
+
+		clearimage("SysOutput");
+		canvas([0,0],[5,0],"SysOutput",
+			strOut = strOut + " Mouse: " + text(baseVector);
+			//drawtext([0,0],strOut,size->8);
+		);
+		drawimage([-1,-1],[13,-1],"SysOutput");
+    </script>
+
+    <script id='zylspimousedown' type='text/x-cindyscript'>
+		pointMouse = mouse()/4;
+		mouseInArea = isInArea([-0.5,3,0.5,0],pointMouse);
+		if(mouseInArea,
+			boolMouseDown = true;
+			//baseVector = gauss((closestCTPoint(cylinder,pointMouse)).z);
+			index = closestCTPoint(cylinder,pointMouse).idx;
+			if(index>1, baseIndex = index);
+		);
+    </script>
+
+    <script type="text/javascript">
+        const zylspigeo = [
+            {name: "A", type: "Free", pinned: false, size: 5, pos: [0.5, 0.5]},
+            {name: "B", type: "Free", visible: false, pinned: false, size: 3, pos: [4, -.5]},
+            {name: "C", type: "Free", visible: false, pinned: false, size: 3, pos: [12, -.5]},
+            {name: "a", type: "Segment", args: ["C", "B"], color: [0, 0, 0], labeled: false},
+            {name: "D", type: "PointOnSegment", pinned: false, size: 3, args: ["a"], pos: [11, -1]},
+            {name: "Text0", type: "Text", color: [0, 0, 0], size: 18, text: "Vergrößerung", pos: [7, -1]},
+            {name: "Text1", type: "Text", color: [0, 0, 0], size: 18, text: "Winkel", pos: [9.5, 0.1]},
+            {name: "Text2", type: "Text", color: [0, 0, 0], size: 18, text: "Radius", pos: [0.1, 9.7]},
+            {
+                name: "ButtonSpirals",
+                type: "ToggleButton",
+                pos: [0.5, -1],
+                color: [0.0, 0.0, 0.0],
+                fillcolor: [0.0, 0.0, 1.0],
+                fillalpha: 0.3,
+                text: "Farbspiralen"
+            }
+        ];
+
+        const zylspicdy = CindyJS({
+            ports: [{
+                id: "zylspiCanvas",
+                width: 800,
+                axes: true,
+                height: 600,
+                transform: [{
+                    visibleRect: [-2.5, 10, 12.5, -1]
+                }],
+                background: "rgb(250,250,250)"
+            }],
+            drawscript: "zylspidraw",
+            initscript: "csinit",
+            mousedownscript: "zylspimousedown",
+            language: "de",
+            autoplay: false,
+            defaultAppearance: {
+                dimDependent: 0.7,
+                fontFamily: "sans-serif",
+                lineSize: 1,
+                pointSize: 5.0,
+                textsize: 12.0
+            },
+            use: ["katex"],
+            geometry: zylspigeo
+        });
+    </script>
 
     <section id="zylinderspiralen">
         <h2>Zylinder und Spiralen</h2>
@@ -499,14 +564,14 @@
 				</li>
 			</ul>
 		</div>
-        <div id="CSCanvas"></div>
+        <div id="zylspiCanvas"></div>
         <p>
             Divergenzwinkel \( \phi_0 \) (in Grad):&nbsp;<input type="text" id="winkel" value="45">
-            <button onclick="cdy.evokeCS('A.x=' + document.getElementById('winkel').value + '/90;')" type="button">
+            <button onclick="zylspicdy.evokeCS('A.x=' + document.getElementById('winkel').value + '/90;')" type="button">
                 Setzen
             </button>
             radialer Zuwachs \(r_0\):&nbsp;<input type="text" id="radius0" value="0.125">
-            <button onclick="cdy.evokeCS('A.y=' + document.getElementById('radius0').value + '*4;')" type="button">
+            <button onclick="zylspicdy.evokeCS('A.y=' + document.getElementById('radius0').value + '*4;')" type="button">
                 Setzen
             </button>
 		</p>
