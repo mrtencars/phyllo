@@ -51,18 +51,6 @@
 	
 		/** METHODS ***/
 	
-		// obsolete: project a ctpoint to a equivalent ctpoint near origin
-		projectToOrigin(ctpoint,vector):=(
-			z1 = ctpoint.z;
-			zv = complex(vector);
-	
-			// bring the ctpoint close to the x-axis
-			while(im(z1-zv)>0,z1=z1-zv);
-	
-			// output: projection to cylinder
-			(re(z1)-floor(re(z1)+0.5)) + i*im(z1)
-		);
-		
 		// Maps a point on the Cylinder to the plane
 		mapPointCylinderToPlane(pointP):=(
 			(pointP.y)^varDoubleScale * exp(i*(pointP.x)*360°) // output
@@ -108,7 +96,6 @@
 		colorLattice(arrCTPoints):= apply(arrCTPoints,ctpoint,
 			apply(ctpoint,val,key,
 				if(key=="c",
-					//val = hue(re(projectToOrigin(ctpoint,baseVector))+0.5),
 					val = hue(mod(ctpoint.idx,baseIndex)/baseIndex),
 					val = val
 				)
@@ -182,6 +169,31 @@
 				z = complex([l*phi-floor(0.5+l*phi),l*h*scaling]);
 			);
 			lattice
+		);
+		
+		// creates points of a plane 1-d-lattice
+		createPLatticePointsH(CLattice,maxheight,scaling):=(
+			lattice = [newCTPoint(0,complex([0,0]),defaultColor,text(0))];
+			h = CLattice.height;
+			phi = CLattice.angle;
+			z = complex([phi,h*scaling]);
+			l = 1;
+			while(im(z)<maxheight,
+				lattice = append(lattice,newCTPoint(l,z,defaultColor,text(l)));
+				l = l+1;
+				z = complex([l*phi,l*h*scaling]);
+			);
+			lattice
+		);
+		
+		// projects a lattice in the plane to a cylindrical lattice
+		projectPLatticeToCylinder(PLattice):=apply(PLattice,ctpoint,
+			apply(ctpoint,val,key,
+				if(key=="z",
+				val = complex([re(val)-floor(0.5+re(val)),im(val)]),
+				val = val
+				)
+			)
 		);
 	
 		// draw a list of CTPoints
@@ -294,6 +306,7 @@
 		createimage("Plane",500,500);
 		createimage("Cylinder",100,500);
 		createimage("SysOutput",700,100);
+		createimage("PlaneCylinder",300,500)
     </script>
 </head>
 <body class="bg-blue-800">
@@ -309,7 +322,7 @@
     <script id="spizyldraw" type='text/x-cindyscript'>
 		varDoubleScale = 0.5+0.5*|D-B|/|C-B|;
 		lattice = newCLattice(A.x/4,A.y/4);
-		cylinder = createCLatticePointsH(lattice,5,1);
+		cylinder = createPLatticePointsH(lattice,5,1);
 		spiral = apply(cylinder,ctpoint,CylinderToPlane(ctpoint));
 
 		xAxis = [
@@ -328,13 +341,13 @@
 		);
 		drawimage([2.5,0],[12.5,0],"Plane");
 
-		clearimage("Cylinder");
-		canvas([-0.5,0],[0.5,0],"Cylinder",
+		clearimage("PlaneCylinder");
+		canvas([-0.5,0],[2.5,0],"PlaneCylinder",
 			h = 5; // height of the cylinder
 			drawLattice(cylinder,h,0.05,1.1);
 			drawCylinder(h,2);
 		);
-		drawimage([-2,0],[2,0],"Cylinder");
+		drawimage([-2,0],[10,0],"PlaneCylinder");
     </script>
 
     <script type="text/javascript">
@@ -350,7 +363,7 @@
         const spizylcdy = CindyJS({
             ports: [{
                 id: "spizylCanvas",
-                width: 800,
+                width: 1000,
                 axes: true,
                 height: 600,
                 transform: [{
