@@ -53,6 +53,14 @@
 	}
 
 	.aufgabe {
-		@apply bg-aufgabe mb-4 p-2;
+		@apply bg-aufgabe-100 mb-4 p-2;
+	}
+
+	.folgerung {
+		@apply bg-folgerung-200 mb-4 p-2;
+	}
+
+	.definition {
+		@apply bg-definition-200 mb-4 p-2;
 	}
 }

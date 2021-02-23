@@ -1,3 +1,5 @@
+const colors = require('tailwindcss/colors')
+
 module.exports = {
   purge: [
     './dist/**/*.html',
@@ -7,7 +9,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        aufgabe: '#345341'
+        aufgabe: colors.yellow,
+        folgerung: colors.indigo,
+        definition: colors.fuchsia,
       }
     },
   },

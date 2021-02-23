@@ -438,8 +438,44 @@
         </p>
         <section id="secSpiraleZylinder">
           <h3>Von der Spirale zum Zylinder</h3>
-          <p>Wir betrachten auf der linken Seite eine</p>
+          <p>
+            Wir nummerieren alle Punkte entgegen der Wachstumsfolge, d.h. der neuste Punkt wird mit \( p_1 \)
+            bezeichnet und der Vorgänger mit \(p_2\), und so weiter. Trägt man diese Punkte dann in ein
+            Koordinatensystem ein, wo die x-Achse dem Winkel und die y-Achse dem Radius entspricht, dann ergibt sich
+            das folgende Bild:
+          </p>
           <div id="spizylCanvas"></div>
+          <p>
+            Diese Linie ist eine Folge unserer Modellannahme, denn in jedem Schritt wächst sowohl der Winkel als
+            auch der Radius um einen konstanten Wert.
+          </p>
+          <p>
+            Und jetzt kommt der Clou: Winkel sind periodisch, ein Winkel von 720°, also zwei vollen Umdrehungen,
+            entspricht im Endeffekt einem Winkel von 360° bzw. 0°. Ebenso ist ein Winkel von 370° nichts anderes
+            als ein Winkel von 10°. Andererseits kann man man einen Winkel von 190° entgegen des Uhrzeigersinns
+            auch als Winkel von -170° (im Uhrzeigersinn) ansehen. Daraus folgt:
+          </p>
+          <div class="folgerung">
+            <h4>Folgerung</h4>
+            <p>
+              Für jeden Winkel \(\phi>180°\) gibt es (genau) einen Repräsentanten \(-180°<\hat{\phi}\leq 180°\), der
+              die gleiche Lage erzeugt.
+            </p>
+          </div>
+          <p>
+            Das Aktivieren des Knopfes "Projektion" im obigen Applet bewirkt genau diese Verschiebung: Die Winkel
+            \(\phi_i\) aller Punkte \(p_i\) werden jeweils auf ihre Repräsentanten abgebildet und es entsteht eine
+            zylinderförmige Anordnung von Punkten \(\hat{p}_i\). Der Radius (y-Achse) und der Winkel (x-Achse) eines
+            jeden Zylinderpunktes \(\hat{p}_i\) entspricht damit genau dem Radius und dem Winkel des entsprechenden
+            Punktes \(p_i\).
+          </p>
+          <div class="definition">
+            <h4>Definition</h4>
+            <p>
+              Die Zuordnung $$ p_i \longmapsto \hat{p}_i $$ nennen wir
+              <dfn id="def-zylinderprojektion">Zylinderprojektion</dfn>.
+            </p>
+          </div>
         </section>
       </section>
 

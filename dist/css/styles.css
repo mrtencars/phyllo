@@ -621,7 +621,21 @@ ul {
 
 .aufgabe {
   --tw-bg-opacity: 1;
-  background-color: rgba(52, 83, 65, var(--tw-bg-opacity));
+  background-color: rgba(254, 249, 195, var(--tw-bg-opacity));
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.folgerung {
+  --tw-bg-opacity: 1;
+  background-color: rgba(199, 210, 254, var(--tw-bg-opacity));
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.definition {
+  --tw-bg-opacity: 1;
+  background-color: rgba(245, 208, 254, var(--tw-bg-opacity));
   margin-bottom: 1rem;
   padding: 0.5rem;
 }
