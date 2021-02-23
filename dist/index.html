@@ -179,16 +179,16 @@
       );
 
       // creates points of a plane 1-d-lattice
-      createPLatticePointsH(CLattice,maxheight,scaling):=(
+      createPLatticePointsH(CLattice,maxheight):=(
       	lattice = [newCTPoint(0,complex([0,0]),defaultColor,text(0))];
       	h = CLattice.height;
       	phi = CLattice.angle;
-      	z = complex([phi,h*scaling]);
+      	z = complex([phi,h]);
       	l = 1;
       	while(im(z)<maxheight,
       		lattice = append(lattice,newCTPoint(l,z,defaultColor,text(l)));
       		l = l+1;
-      		z = complex([l*phi,l*h*scaling]);
+      		z = complex([l*phi,l*h]);
       	);
       	lattice
       );
@@ -328,11 +328,16 @@
       </section>
 
       <script id="spizyldraw" type="text/x-cindyscript">
-
-        varDoubleScale = 0.5;//0.5+0.5*|D-B|/|C-B|; ///
+        maxRadius = 10; // Maximaler Radius der Gitterpunkte
+        varDoubleScale = 0.7; // Radius = Radius^Skalierung
         lattice = newCLattice(A.x,A.y);
-        cylinder = createPLatticePointsH(lattice,2,1);
+        cylinder = createPLatticePointsH(lattice,maxRadius);
         spiral = apply(cylinder,ctpoint,CylinderToPlane(ctpoint));
+        
+        // Gegebenenfalls auf den Zylinder projizieren
+        if(ButtonPojectCyl.pressed,
+          cylinder = projectPLatticeToCylinder(cylinder)
+        );
 
         xAxis = [
         	newAnnotation([-0.5,0],"-180°"),
@@ -343,17 +348,25 @@
         drawAxis("horizontal",xAxis,2,14,0.05,0.2,(0,0,0));
 
         drawtext(A.xy+[0.1,0.1],text(360°*A.x));
-
+        
+        sizePoints = 8;
+        sizeText = 20;
+        offsetText = 0.08; 
+        
         clearimage("spizylPlane");
         canvas([-8,-4],[8,-4],"spizylPlane",
-        	drawLattice(spiral,9,0.0570,4);
+        	drawLattice(spiral,sizeText,offsetText,sizePoints);
         );
         drawimage(M,N,"spizylPlane");
+        
+        sizePoints = 4;
+        sizeText = 11;
+        offsetText = 0.04;
 
         clearimage("spizylCyl");
         canvas([-0.5,0],[7.5,0],"spizylCyl",
         	h = 2; // height of the cylinder
-        	drawLattice(cylinder,11,0.025,5);
+          drawLattice(cylinder,sizeText,offsetText,sizePoints);
         	drawCylinder(h,2);
         );
         drawimage([-0.5,0],[7.5,0],"spizylCyl");
@@ -361,47 +374,17 @@
 
       <script type="text/javascript">
         const spizylgeo = [
-          { name: "M", type: "Free", pinned: false, size: 5, pos: [-0.5, 2] },
-          { name: "N", type: "Free", pinned: false, size: 5, pos: [7.5, 2] },
-          { name: "A", type: "Free", pinned: false, size: 5, pos: [0.5, 0.5] },
+          { name: "M", type: "Free", visible: false, pinned: false, size: 5, pos: [-0.5, 2.5] },
+          { name: "N", type: "Free", visible: false, pinned: false, size: 5, pos: [7.5, 2.5] },
+          { name: "A", type: "Free", pinned: false, size: 5, pos: [0.37, 0.1] },
           {
-            name: "B",
-            type: "Free",
-            visible: false,
-            pinned: false,
-            size: 3,
-            pos: [4, -0.5],
-          },
-          {
-            name: "C",
-            type: "Free",
-            visible: false,
-            pinned: false,
-            size: 3,
-            pos: [12, -0.5],
-          },
-          {
-            name: "a",
-            type: "Segment",
-            args: ["C", "B"],
-            color: [0, 0, 0],
-            labeled: false,
-          },
-          {
-            name: "D",
-            type: "PointOnSegment",
-            pinned: false,
-            size: 3,
-            args: ["a"],
-            pos: [11, -1],
-          },
-          {
-            name: "Text0",
-            type: "Text",
-            color: [0, 0, 0],
-            size: 18,
-            text: "Vergrößerung",
-            pos: [7, -1],
+            name: "ButtonPojectCyl",
+            type: "ToggleButton",
+            pos: [0.5, -0.5],
+            color: [0.0, 0.0, 0.0],
+            fillcolor: [0.0, 0.0, 1.0],
+            fillalpha: 0.3,
+            text: "Projektion",
           },
         ];
 
@@ -414,7 +397,7 @@
               height: 700,
               transform: [
                 {
-                  visibleRect: [-0.5, 8, 7.5, -1],
+                  visibleRect: [-0.5, 6, 7.5, -0.5],
                 },
               ],
               background: "rgb(250,250,250)",
