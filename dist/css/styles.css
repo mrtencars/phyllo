@@ -518,6 +518,8 @@ video {
 }
 
 body {
+  --tw-bg-opacity: 1;
+  background-color: rgba(243, 244, 246, var(--tw-bg-opacity));
   counter-reset:section;
 }
 
@@ -619,6 +621,10 @@ ul {
   list-style-type: disc;
 }
 
+.applet{
+  align-content: center;
+}
+
 .aufgabe {
   --tw-bg-opacity: 1;
   background-color: rgba(254, 249, 195, var(--tw-bg-opacity));
@@ -638,6 +644,16 @@ ul {
   background-color: rgba(245, 208, 254, var(--tw-bg-opacity));
   margin-bottom: 1rem;
   padding: 0.5rem;
+}
+
+figure {
+  align-content: center;
+  text-align: center;
+}
+
+figcaption{
+  display: inline-block;
+  text-align: left;
 }
 
 .container {
@@ -672,11 +688,6 @@ ul {
   .container {
     max-width: 1536px;
   }
-}
-
-.bg-blue-800 {
-  --tw-bg-opacity: 1;
-  background-color: rgba(30, 64, 175, var(--tw-bg-opacity));
 }
 
 .border-collapse {

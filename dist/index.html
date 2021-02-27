@@ -19,14 +19,13 @@
 
     <!-- Alpine.js -->
     <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
-      defer
-    ></script>
+      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
 
     <!-- CindyJS -->
     <script type="text/javascript" src="./js/Cindy.js"></script>
     <link rel="stylesheet" href="./css/CIndyJS.css" />
 
+    <!-- CSinit -->
     <script id="csinit" type="text/x-cindyscript">
       /*** SYSOUTPUT ***/
       strOut = "";
@@ -316,24 +315,15 @@
       createimage("spizylCyl",800,200);
       createimage("spizylPlane",800,400);
     </script>
-  </head>
-  <body class="bg-blue-800">
-    <main>
-      <section id="intro">
-        <h1>Phyllotaxis</h1>
-        <p>
-          In diesem Applet soll das Wachstum von Blüten und Knospen dargestellt
-          werden.
-        </p>
-      </section>
 
-      <script id="spizyldraw" type="text/x-cindyscript">
+    <!-- CS Applet Spirale zu Zylinder -->
+    <script id="spizyldraw" type="text/x-cindyscript">
         maxRadius = 10; // Maximaler Radius der Gitterpunkte
         varDoubleScale = 0.7; // Radius = Radius^Skalierung
         lattice = newCLattice(A.x,A.y);
         cylinder = createPLatticePointsH(lattice,maxRadius);
         spiral = apply(cylinder,ctpoint,CylinderToPlane(ctpoint));
-        
+
         // Gegebenenfalls auf den Zylinder projizieren
         if(ButtonPojectCyl.pressed,
           cylinder = projectPLatticeToCylinder(cylinder)
@@ -348,17 +338,17 @@
         drawAxis("horizontal",xAxis,2,14,0.05,0.2,(0,0,0));
 
         drawtext(A.xy+[0.1,0.1],text(360°*A.x));
-        
+
         sizePoints = 8;
         sizeText = 20;
-        offsetText = 0.08; 
-        
+        offsetText = 0.08;
+
         clearimage("spizylPlane");
         canvas([-8,-4],[8,-4],"spizylPlane",
         	drawLattice(spiral,sizeText,offsetText,sizePoints);
         );
         drawimage(M,N,"spizylPlane");
-        
+
         sizePoints = 4;
         sizeText = 11;
         offsetText = 0.04;
@@ -371,115 +361,55 @@
         );
         drawimage([-0.5,0],[7.5,0],"spizylCyl");
       </script>
+    <script type="text/javascript">
+      const spizylgeo = [
+        { name: "M", type: "Free", visible: false, pinned: false, size: 5, pos: [-0.5, 2.5] },
+        { name: "N", type: "Free", visible: false, pinned: false, size: 5, pos: [7.5, 2.5] },
+        { name: "A", type: "Free", pinned: false, size: 5, pos: [0.37, 0.1] },
+        {
+          name: "ButtonPojectCyl",
+          type: "ToggleButton",
+          pos: [0.5, -0.5],
+          color: [0.0, 0.0, 0.0],
+          fillcolor: [0.0, 0.0, 1.0],
+          fillalpha: 0.3,
+          text: "Projektion",
+        },
+      ];
 
-      <script type="text/javascript">
-        const spizylgeo = [
-          { name: "M", type: "Free", visible: false, pinned: false, size: 5, pos: [-0.5, 2.5] },
-          { name: "N", type: "Free", visible: false, pinned: false, size: 5, pos: [7.5, 2.5] },
-          { name: "A", type: "Free", pinned: false, size: 5, pos: [0.37, 0.1] },
+      const spizylcdy = CindyJS({
+        ports: [
           {
-            name: "ButtonPojectCyl",
-            type: "ToggleButton",
-            pos: [0.5, -0.5],
-            color: [0.0, 0.0, 0.0],
-            fillcolor: [0.0, 0.0, 1.0],
-            fillalpha: 0.3,
-            text: "Projektion",
+            id: "spizylCanvas",
+            width: 800,
+            axes: true,
+            height: 700,
+            transform: [
+              {
+                visibleRect: [-0.5, 6, 7.5, -0.5],
+              },
+            ],
+            background: "rgb(250,250,250)",
           },
-        ];
+        ],
+        drawscript: "spizyldraw",
+        initscript: "csinit",
+        language: "de",
+        autoplay: false,
+        defaultAppearance: {
+          dimDependent: 0.7,
+          fontFamily: "sans-serif",
+          lineSize: 1,
+          pointSize: 5.0,
+          textsize: 12.0,
+        },
+        use: ["katex"],
+        geometry: spizylgeo,
+      });
+    </script>
 
-        const spizylcdy = CindyJS({
-          ports: [
-            {
-              id: "spizylCanvas",
-              width: 800,
-              axes: true,
-              height: 700,
-              transform: [
-                {
-                  visibleRect: [-0.5, 6, 7.5, -0.5],
-                },
-              ],
-              background: "rgb(250,250,250)",
-            },
-          ],
-          drawscript: "spizyldraw",
-          initscript: "csinit",
-          language: "de",
-          autoplay: false,
-          defaultAppearance: {
-            dimDependent: 0.7,
-            fontFamily: "sans-serif",
-            lineSize: 1,
-            pointSize: 5.0,
-            textsize: 12.0,
-          },
-          use: ["katex"],
-          geometry: spizylgeo,
-        });
-      </script>
-
-      <section id="modell">
-        <h2>Das Modell</h2>
-        <p>Wir gehen im folgenden von 2 Eigenschaften aus:</p>
-        <ol>
-          <li>
-            Bei jeder neuen Knospe dreht sich die Konfiguration um einen
-            bestim‚mten Winkel \( \phi_0 \), genannt <i>Divergenzwinkel</i>.
-          </li>
-          <li>
-            Bei jeder neuen Knospe wächst die Konfiguration um einen gewissen
-            radialen Zuwachs \( r_0 \) nach außen.
-          </li>
-        </ol>
-        <p>
-          Damit kann man sagen, dass die Knospen auf einer Spirale angeordnet
-          sind.
-        </p>
-        <section id="secSpiraleZylinder">
-          <h3>Von der Spirale zum Zylinder</h3>
-          <p>
-            Wir nummerieren alle Punkte entgegen der Wachstumsfolge, d.h. der neuste Punkt wird mit \( p_1 \)
-            bezeichnet und der Vorgänger mit \(p_2\), und so weiter. Trägt man diese Punkte dann in ein
-            Koordinatensystem ein, wo die x-Achse dem Winkel und die y-Achse dem Radius entspricht, dann ergibt sich
-            das folgende Bild:
-          </p>
-          <div id="spizylCanvas"></div>
-          <p>
-            Diese Linie ist eine Folge unserer Modellannahme, denn in jedem Schritt wächst sowohl der Winkel als
-            auch der Radius um einen konstanten Wert.
-          </p>
-          <p>
-            Und jetzt kommt der Clou: Winkel sind periodisch, ein Winkel von 720°, also zwei vollen Umdrehungen,
-            entspricht im Endeffekt einem Winkel von 360° bzw. 0°. Ebenso ist ein Winkel von 370° nichts anderes
-            als ein Winkel von 10°. Andererseits kann man man einen Winkel von 190° entgegen des Uhrzeigersinns
-            auch als Winkel von -170° (im Uhrzeigersinn) ansehen. Daraus folgt:
-          </p>
-          <div class="folgerung">
-            <h4>Folgerung</h4>
-            <p>
-              Für jeden Winkel \(\phi>180°\) gibt es (genau) einen Repräsentanten \(-180°<\hat{\phi}\leq 180°\), der
-              die gleiche Lage erzeugt.
-            </p>
-          </div>
-          <p>
-            Das Aktivieren des Knopfes "Projektion" im obigen Applet bewirkt genau diese Verschiebung: Die Winkel
-            \(\phi_i\) aller Punkte \(p_i\) werden jeweils auf ihre Repräsentanten abgebildet und es entsteht eine
-            zylinderförmige Anordnung von Punkten \(\hat{p}_i\). Der Radius (y-Achse) und der Winkel (x-Achse) eines
-            jeden Zylinderpunktes \(\hat{p}_i\) entspricht damit genau dem Radius und dem Winkel des entsprechenden
-            Punktes \(p_i\).
-          </p>
-          <div class="definition">
-            <h4>Definition</h4>
-            <p>
-              Die Zuordnung $$ p_i \longmapsto \hat{p}_i $$ nennen wir
-              <dfn id="def-zylinderprojektion">Zylinderprojektion</dfn>.
-            </p>
-          </div>
-        </section>
-      </section>
-
-      <script id="zylspidraw" type="text/x-cindyscript">
+    <!-- CS Applet Zylinder zu Spirale -->
+    <script id="zylspidraw" type="text/x-cindyscript">
         strOut = text(mouseInArea) + " " ;
         varDoubleScale = 0.5+0.5*|D-B|/|C-B|;
         lattice = newCLattice(A.x/4,A.y/4);
@@ -531,8 +461,7 @@
         );
         drawimage([-1,-1],[13,-1],"SysOutput");
       </script>
-
-      <script id="zylspimousedown" type="text/x-cindyscript">
+    <script id="zylspimousedown" type="text/x-cindyscript">
         pointMouse = mouse()/4;
         mouseInArea = isInArea([-0.5,3,0.5,0],pointMouse);
         if(mouseInArea,
@@ -542,111 +471,213 @@
         	if(index>1, baseIndex = index);
         );
       </script>
+    <script type="text/javascript">
+      const zylspigeo = [
+        { name: "A", type: "Free", pinned: false, size: 5, pos: [0.5, 0.5] },
+        {
+          name: "B",
+          type: "Free",
+          visible: false,
+          pinned: false,
+          size: 3,
+          pos: [4, -0.5],
+        },
+        {
+          name: "C",
+          type: "Free",
+          visible: false,
+          pinned: false,
+          size: 3,
+          pos: [12, -0.5],
+        },
+        {
+          name: "a",
+          type: "Segment",
+          args: ["C", "B"],
+          color: [0, 0, 0],
+          labeled: false,
+        },
+        {
+          name: "D",
+          type: "PointOnSegment",
+          pinned: false,
+          size: 3,
+          args: ["a"],
+          pos: [11, -1],
+        },
+        {
+          name: "Text0",
+          type: "Text",
+          color: [0, 0, 0],
+          size: 18,
+          text: "Vergrößerung",
+          pos: [7, -1],
+        },
+        {
+          name: "Text1",
+          type: "Text",
+          color: [0, 0, 0],
+          size: 18,
+          text: "Winkel",
+          pos: [9.5, 0.1],
+        },
+        {
+          name: "Text2",
+          type: "Text",
+          color: [0, 0, 0],
+          size: 18,
+          text: "Radius",
+          pos: [0.1, 9.7],
+        },
+        {
+          name: "ButtonSpirals",
+          type: "ToggleButton",
+          pos: [0.5, -1],
+          color: [0.0, 0.0, 0.0],
+          fillcolor: [0.0, 0.0, 1.0],
+          fillalpha: 0.3,
+          text: "Farbspiralen",
+        },
+      ];
 
-      <script type="text/javascript">
-        const zylspigeo = [
-          { name: "A", type: "Free", pinned: false, size: 5, pos: [0.5, 0.5] },
+      const zylspicdy = CindyJS({
+        ports: [
           {
-            name: "B",
-            type: "Free",
-            visible: false,
-            pinned: false,
-            size: 3,
-            pos: [4, -0.5],
+            id: "zylspiCanvas",
+            width: 800,
+            axes: true,
+            height: 600,
+            transform: [
+              {
+                visibleRect: [-2.5, 10, 12.5, -1],
+              },
+            ],
+            background: "rgb(250,250,250)",
           },
-          {
-            name: "C",
-            type: "Free",
-            visible: false,
-            pinned: false,
-            size: 3,
-            pos: [12, -0.5],
-          },
-          {
-            name: "a",
-            type: "Segment",
-            args: ["C", "B"],
-            color: [0, 0, 0],
-            labeled: false,
-          },
-          {
-            name: "D",
-            type: "PointOnSegment",
-            pinned: false,
-            size: 3,
-            args: ["a"],
-            pos: [11, -1],
-          },
-          {
-            name: "Text0",
-            type: "Text",
-            color: [0, 0, 0],
-            size: 18,
-            text: "Vergrößerung",
-            pos: [7, -1],
-          },
-          {
-            name: "Text1",
-            type: "Text",
-            color: [0, 0, 0],
-            size: 18,
-            text: "Winkel",
-            pos: [9.5, 0.1],
-          },
-          {
-            name: "Text2",
-            type: "Text",
-            color: [0, 0, 0],
-            size: 18,
-            text: "Radius",
-            pos: [0.1, 9.7],
-          },
-          {
-            name: "ButtonSpirals",
-            type: "ToggleButton",
-            pos: [0.5, -1],
-            color: [0.0, 0.0, 0.0],
-            fillcolor: [0.0, 0.0, 1.0],
-            fillalpha: 0.3,
-            text: "Farbspiralen",
-          },
-        ];
+        ],
+        drawscript: "zylspidraw",
+        initscript: "csinit",
+        mousedownscript: "zylspimousedown",
+        language: "de",
+        autoplay: false,
+        defaultAppearance: {
+          dimDependent: 0.7,
+          fontFamily: "sans-serif",
+          lineSize: 1,
+          pointSize: 5.0,
+          textsize: 12.0,
+        },
+        use: ["katex"],
+        geometry: zylspigeo,
+      });
+    </script>
 
-        const zylspicdy = CindyJS({
-          ports: [
-            {
-              id: "zylspiCanvas",
-              width: 800,
-              axes: true,
-              height: 600,
-              transform: [
-                {
-                  visibleRect: [-2.5, 10, 12.5, -1],
-                },
-              ],
-              background: "rgb(250,250,250)",
-            },
-          ],
-          drawscript: "zylspidraw",
-          initscript: "csinit",
-          mousedownscript: "zylspimousedown",
-          language: "de",
-          autoplay: false,
-          defaultAppearance: {
-            dimDependent: 0.7,
-            fontFamily: "sans-serif",
-            lineSize: 1,
-            pointSize: 5.0,
-            textsize: 12.0,
-          },
-          use: ["katex"],
-          geometry: zylspigeo,
-        });
-      </script>
+  </head>
+  <body>
+    <main>
 
-      <section id="zylinderspiralen">
-        <h2>Zylinder und Spiralen</h2>
+      <section id="intro">
+        <h1>Phyllotaxis</h1>
         <p>
+          In diesem Applet soll das Wachstum von Blüten und Knospen dargestellt
+          werden.
+        </p>
+      </section>
+
+      <section id="modell">
+        <h2>Das Modell</h2>
+        <p>Wir gehen im folgenden von 2 Eigenschaften aus:</p>
+        <ol>
+          <li>
+            Bei jeder neuen Knospe dreht sich die Konfiguration um einen
+            bestim‚mten Winkel \( \phi_0 \), genannt <i>Divergenzwinkel</i>.
+          </li>
+          <li>
+            Bei jeder neuen Knospe wächst die Konfiguration um einen gewissen
+            radialen Zuwachs \( r_0 \) nach außen.
+          </li>
+        </ol>
+        <p>
+          Damit kann man sagen, dass die Knospen auf einer Spirale angeordnet
+          sind.
+        </p>
+        <section id="secSpiraleZylinder">
+          <h3>Von der Spirale zum Zylinder</h3>
+          <p>
+            Wir nummerieren alle Punkte entgegen der Wachstumsfolge, d.h. der neuste Punkt wird mit \( p_1 \)
+            bezeichnet und der Vorgänger mit \(p_2\), und so weiter. Trägt man diese Punkte dann in ein
+            Koordinatensystem ein, wo die x-Achse dem Winkel und die y-Achse dem Radius entspricht, dann ergibt sich
+            das folgende Bild:
+          </p>
+          <figure>
+            <div class="applet" id="spizylCanvas"></div>
+            <figcaption>
+              Mit dem roten Punkt kann man den Divergenzwinkel (horizontal) und den Radius (vertikal) einstellen.
+            </figcaption>
+          </figure>
+          <p>
+            Diese Linie ist eine Folge unserer Modellannahme, denn in jedem Schritt wächst sowohl der Winkel als
+            auch der Radius um einen konstanten Wert.
+          </p>
+          <p>
+            Und jetzt kommt der Clou: Winkel sind periodisch, ein Winkel von 720°, also zwei vollen Umdrehungen,
+            entspricht im Endeffekt einem Winkel von 360° bzw. 0°. Ebenso ist ein Winkel von 370° nichts anderes
+            als ein Winkel von 10°. Andererseits kann man man einen Winkel von 190° entgegen des Uhrzeigersinns
+            auch als Winkel von -170° (im Uhrzeigersinn) ansehen. Daraus folgt:
+          </p>
+          <div class="folgerung">
+            <h4>Folgerung</h4>
+            <p>
+              Für jeden Winkel \(\phi>180°\) gibt es (genau) einen Repräsentanten \(-180°<\hat{\phi}\leq 180°\), der
+              die gleiche Lage erzeugt.
+            </p>
+          </div>
+          <p>
+            Das Aktivieren des Knopfes "Projektion" im obigen Applet bewirkt genau diese Verschiebung: Die Winkel
+            \(\phi_i\) aller Punkte \(p_i\) werden jeweils auf ihre Repräsentanten abgebildet und es entsteht eine
+            zylinderförmige Anordnung von Punkten \(\hat{p}_i\). Der Radius (y-Achse) und der Winkel (x-Achse) eines
+            jeden Zylinderpunktes \(\hat{p}_i\) entspricht damit genau dem Radius und dem Winkel des entsprechenden
+            Punktes \(p_i\).
+          </p>
+          <div class="definition">
+            <h4>Definition</h4>
+            <p>
+              Die Zuordnung $$ p_i \longmapsto \hat{p}_i $$ nennen wir
+              <dfn id="def-zylinderprojektion">Zylinderprojektion</dfn>.
+            </p>
+          </div>
+          <p>
+            Diese Projektion ist auch umkehrbar, d.h. aus einer gegebenen Anordnung auf dem Zylinder kann man in
+            eindeutiger Weise auch eine entsprechende kreisförmige Anordnung generieren.
+          </p>
+        </section>
+
+        <section id="subsecZylinderSpirale">
+          <h3>Von vom Zylinder zur Spirale</h3>
+          <p>
+            Hauptsächlich werden wir im Folgenden das Knospenwachstums anhand der Zylinderdarstellung studieren.
+            Aus diesem Grund soll zunächst nochmal veranschaulicht werden, wie man von einer Zylinderdarstellung wieder
+            auf die Kreisförmige anordnung der Punkte kommt.
+          </p>
+          <p>
+            Bei jedem Zylinderpunkt \(\hat{p}_i\) entspricht die "x"-Koordinate einem Winkel \(\phi_i\) und die
+            "y"-Koordinate entspricht einem Radius \(r_i\). Um nun von \(\hat{p}_i\) zu \(p_i\) in der kreisförmigen
+            Anordnung zu kommen, malt man im Abstand \(r_i\) zum Koordinatenursprung unter dem Winkel \(\phi_i\) in das
+            Koordinatensystem ein. Beachte, dass ein negativer Winkel einer Drehung im Uhrzeigersinn und ein positiver
+            Winkel einer Drehung entgegen des Uhrzeigersinns entspricht.
+          </p>
+        </section>
+      </section>
+
+      <section id="seczylinderspiralen">
+        <h2>Die Spiralen die wir sehen</h2>
+        <p>
+          Wie wir schon gesehen haben, sind die Punkte in der Ebene alle spiralförmig angeordnet. Jedoch scheint es
+          auch innerhalb der großen Spirale viele kleine Spiralen zu geben: Die einen sieht man besser, die anderen
+          sieht man etwas schwieriger. Dies wollen wir nun genauer untersuchen.
+        </p>
+        <p>
+          Dazu benutzen wir die Zylinderdarstellung aus <a href="#secSpiraleZylinder"> Kapitel 1</a>.
           Im ersten Applet sehen wir links ein zylinderförmiges
           Koordinatensystem: Die x-Achse entspricht dem Drehwinkel und die
           y-Achse entspricht dem Radius, also dem Abstand einer Knospe zum

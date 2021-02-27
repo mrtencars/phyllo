@@ -4,6 +4,7 @@
 
 @layer base {
 	body {
+		@apply bg-gray-100;
 		counter-reset:section;
 	}
 
@@ -51,6 +52,9 @@
 	ul {
 		@apply list-disc list-inside;
 	}
+	.applet{
+		@apply content-center;
+	}
 
 	.aufgabe {
 		@apply bg-aufgabe-100 mb-4 p-2;
@@ -62,5 +66,15 @@
 
 	.definition {
 		@apply bg-definition-200 mb-4 p-2;
+	}
+
+	figure {
+		@apply content-center;
+		text-align: center;
+	}
+
+	figcaption{
+		display: inline-block;
+		text-align: left;
 	}
 }
