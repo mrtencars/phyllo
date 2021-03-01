@@ -8,14 +8,13 @@
 
     <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
-    ></script>
+    <script id="MathJax-script" async  src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script>
+
+    <!-- WebComponents -->
+    <script type="module" src="components/components.js"></script>
 
     <!-- Alpine.js -->
     <script
@@ -639,6 +638,9 @@
             jeden Zylinderpunktes \(\hat{p}_i\) entspricht damit genau dem Radius und dem Winkel des entsprechenden
             Punktes \(p_i\).
           </p>
+          <box-definition name="Zylinderprojektion">
+            Die Zuordnung $$ p_i \longmapsto \hat{p}_i $$ nennen wir Zylinderprojektion
+          </box-definition>
           <div class="definition">
             <h4>Definition</h4>
             <p>
