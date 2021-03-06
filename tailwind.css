@@ -63,4 +63,10 @@
 	.definition {
 		@apply bg-definition-200 mb-4 p-2;
 	}
+
+	.smallbutton{
+		@apply bg-gray-300 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded;
+	}
+
+	.hinweis {}
 }

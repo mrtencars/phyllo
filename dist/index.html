@@ -17,12 +17,6 @@
       MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
     </script>
 
-    <!-- Alpine.js -->
-    <script
-      src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js"
-      defer
-    ></script>
-
     <!-- CindyJS -->
     <script type="text/javascript" src="./js/Cindy.js"></script>
     <link rel="stylesheet" href="./css/CIndyJS.css" />
@@ -318,7 +312,7 @@
     </script>
   </head>
   <body class="bg-blue-800">
-    <main>
+    <main id="app">
       <section id="intro">
         <h1>Phyllotaxis</h1>
         <p>
@@ -445,23 +439,16 @@
             das folgende Bild:
           </p>
           <div id="spizylCanvas"></div>
-          <p>
-            Diese Linie ist eine Folge unserer Modellannahme, denn in jedem Schritt wächst sowohl der Winkel als
-            auch der Radius um einen konstanten Wert.
-          </p>
-          <p>
-            Und jetzt kommt der Clou: Winkel sind periodisch, ein Winkel von 720°, also zwei vollen Umdrehungen,
+            <p>Diese Linie ist eine Folge unserer Modellannahme, denn in jedem Schritt wächst sowohl der Winkel als
+            auch der Radius um einen konstanten Wert.</p>
+            <p>Und jetzt kommt der Clou: Winkel sind periodisch, ein Winkel von 720°, also zwei vollen Umdrehungen,
             entspricht im Endeffekt einem Winkel von 360° bzw. 0°. Ebenso ist ein Winkel von 370° nichts anderes
             als ein Winkel von 10°. Andererseits kann man man einen Winkel von 190° entgegen des Uhrzeigersinns
-            auch als Winkel von -170° (im Uhrzeigersinn) ansehen. Daraus folgt:
-          </p>
-          <div class="folgerung">
-            <h4>Folgerung</h4>
-            <p>
+            auch als Winkel von -170° (im Uhrzeigersinn) ansehen. Daraus folgt:</p>
+          <Folgerung>
               Für jeden Winkel \(\phi>180°\) gibt es (genau) einen Repräsentanten \(-180°<\hat{\phi}\leq 180°\), der
               die gleiche Lage erzeugt.
-            </p>
-          </div>
+          </Folgerung>
           <p>
             Das Aktivieren des Knopfes "Projektion" im obigen Applet bewirkt genau diese Verschiebung: Die Winkel
             \(\phi_i\) aller Punkte \(p_i\) werden jeweils auf ihre Repräsentanten abgebildet und es entsteht eine
@@ -469,13 +456,10 @@
             jeden Zylinderpunktes \(\hat{p}_i\) entspricht damit genau dem Radius und dem Winkel des entsprechenden
             Punktes \(p_i\).
           </p>
-          <div class="definition">
-            <h4>Definition</h4>
-            <p>
-              Die Zuordnung $$ p_i \longmapsto \hat{p}_i $$ nennen wir
-              <dfn id="def-zylinderprojektion">Zylinderprojektion</dfn>.
-            </p>
-          </div>
+          <Definition name="Zylinderprojektion">
+                Die Zuordnung $$ p_i \longmapsto \hat{p}_i $$ nennen wir
+                <dfn id="def-zylinderprojektion">Zylinderprojektion</dfn>.
+            </Definition>
         </section>
       </section>
 
@@ -672,32 +656,26 @@
           Divergenzwinkel \(\phi_0\) und den radialen Zuwachs \(r_0\)
           einstellen. Es entstehen verschiedene Muster in der Ebene.
         </p>
-        <div class="aufgabe">
-          <h4>Aufgabe 1</h4>
-          <ol>
-            <li>
-              Experimentiere mit Divergenzwinkel und radialem Zuwachs. Achte
-              dabei auf die Form und die Anzahl von Spiralen.
-            </li>
-            <li>
-              Kannst Du schon Aussagen zur Abhängigkeit der Form und die Anzahl
-              der Spiralen von Divergenzwinkel und radialem Zuwachs machen?
-            </li>
-          </ol>
-        </div>
-        <div x-data="{ isOpen: false }" class="antwort">
-          <button @click="isOpen = !isOpen">Hinweise:</button>
-          <ul x-show="isOpen">
-            <li>
-              Die Anzahl und Form der Spiralen hängt anscheinend nicht vom
-              radialen Zuwachs ab.
-            </li>
-            <li>
-              Für manche Winkel gibt drehen sich die Spiralen im Uhrzeigersinn,
-              für andere drehen sie sich entgegengesetzt.
-            </li>
-          </ul>
-        </div>
+        <Aufgabe>
+            <ol>
+                <li>
+                    Experimentiere mit Divergenzwinkel und radialem Zuwachs. Achte
+                    dabei auf die Form und die Anzahl von Spiralen.</li>
+                <li>
+                    Kannst Du schon Aussagen zur Abhängigkeit der Form und die Anzahl
+                    der Spiralen von Divergenzwinkel und radialem Zuwachs machen</li>
+            </ol>
+            <Hinweis>
+                <ul>
+                    <li>
+                        Die Anzahl und Form der Spiralen hängt anscheinend nicht vom
+                        radialen Zuwachs ab.</li>
+                    <li>
+                        Für manche Winkel gibt drehen sich die Spiralen im Uhrzeigersinn,
+                        für andere drehen sie sich entgegengesetzt.</li>
+                </ul>
+            </Hinweis>
+        </Aufgabe>
         <div id="zylspiCanvas"></div>
         <p>
           Divergenzwinkel \( \phi_0 \) (in Grad):&nbsp;<input
@@ -726,4 +704,8 @@
       </section>
     </main>
   </body>
+  <footer>
+    <script src="https://unpkg.com/vue"></script>
+    <script src="js/components.js"></script>
+  </footer>
 </html>
