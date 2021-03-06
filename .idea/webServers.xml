@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="62ad0206-c9d5-43d9-acb1-d6aae7b326d4" name="andenserver" url="http://home.carstenfalk.de">
+        <fileTransfer rootFolder="/home/www" accessType="SFTP" host="home.carstenfalk.de" port="22" sshConfigId="c8012514-5682-4d48-8629-6650a5c49d4a" sshConfig="carsten@home.carstenfalk.de:22:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
