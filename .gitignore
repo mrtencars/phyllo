@@ -1,5 +1,3 @@
 node_modules/
 .nova/
 .DS_Store*
-.idea/sshConfigs.xml
-.idea/webServers.xml
