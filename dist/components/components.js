@@ -6,7 +6,7 @@ Vue.component('Definition',{
     props: ['name'],
     data() {
         return {
-            defName: 'def-' + this.$props.name,
+            defName: 'def-' + this.name,
         }
     }
 })
@@ -16,6 +16,28 @@ Vue.component('Folgerung',{
             '<h4>Folgerung</h4>' +
             '<p><slot></slot></p>' +
         '</div>'
+})
+
+Vue.component('cs-applet',{
+    template:'<div class="csapplet">' +
+        '<iframe :src="srcApplet"  :style="styleObject">' +
+        '</iframe>' +
+        '<p><b>Beschreibung:</b> <slot></slot></p>' +
+        '</div>',
+    props: ['srcPrm', 'hPrm'],
+    data() {
+        let appHeight = this.hPrm;
+        return {
+            srcApplet: this.srcPrm,
+            styleObject: {
+                border: 'none',
+                top: '0',
+                left: '0',
+                width: '100%',
+                height: appHeight
+            }
+        }
+    }
 })
 
 Vue.component('Aufgabe',{

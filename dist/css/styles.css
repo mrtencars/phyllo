@@ -664,6 +664,16 @@ ul {
 .hinweis {
 }
 
+.csapplet {
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  margin-bottom: 0.5rem;
+  padding: 0.25rem;
+  --tw-text-opacity: 1;
+  color: rgba(0, 0, 0, var(--tw-text-opacity));
+  font-style: italic;
+}
+
 .container {
   width: 100%;
 }

@@ -69,4 +69,8 @@
 	}
 
 	.hinweis {}
+
+	.csapplet {
+		@apply mb-2 p-1 text-sm text-black italic;
+	}
 }

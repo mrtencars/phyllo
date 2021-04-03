@@ -3690,7 +3690,7 @@ const Polygon3D = require('./math/Polygon3')
  * @returns {CSG} new CSG object
  */
 const fromPolygons = function (polygons) {
-  const CSG = require('./CSG')
+  const CSG = require('./csg')
   let csg = new CSG()
   csg.polygons = polygons
   csg.isCanonicalized = false
@@ -4205,7 +4205,7 @@ ConnectorList.prototype = {
      * TODO: consider an option "maySelfIntersect" to close & force union all single segments
      */
   followWith: function (cagish) {
-    const CSG = require('./CSG') // FIXME , circular dependency connectors => CSG => connectors
+    const CSG = require('./csg') // FIXME , circular dependency connectors => CSG => connectors
 
     this.verify()
     function getCag (cagish, connector) {

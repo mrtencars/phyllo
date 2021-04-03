@@ -3550,7 +3550,7 @@ module.exports = {
   mat3: require("gl-matrix").mat3,
   vec3: require("gl-matrix").vec3,
   loopController: undefined,
-  version: require('./version.js'),
+  version: require('./Version.js'),
 
   /**
    * Expose utility libraries for convenience
