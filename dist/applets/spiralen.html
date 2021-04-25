@@ -23,15 +23,19 @@
 
     </script>
     <script id="csdraw" type="text/x-cindyscript">
-      anzahl = 100*|E-B|/|A-B|;
-      stoerung = 0.0003*F.y;
+      scale = ((|K-G|+0.05)/|G-H|);
+      anzahl = ceil(100*|E-B|/(|A-B|*scale^2));
+      farbzahl = ceil(200*|Q-P|/|O-P|+1);
+      stoerung = 0.004*F.y;
       gesamtwinkel = winkel + stoerung;
       repeat(anzahl,i,
       	w=i*gesamtwinkel*360°;
-      	p=(cos(w),sin(w))*0.4*sqrt(i);
-      	draw(p,size->sqrt(i),color->hue(0.6));
-        drawtext((-.2,0),gesamtwinkel*360°);
+      	p=scale*(cos(w),sin(w))*0.4*sqrt(i);
+      	draw(p,size->scale*sqrt(i),color->hue(0.6+i/farbzahl));
       );
+      drawtext((-.2,0),gesamtwinkel*360°);
+      drawtext((Q.x+0.2,Q.y-0.2),farbzahl);
+      drawtext((E.x+0.2,E.y-0.2),anzahl);
 
 
     </script>
@@ -50,28 +54,28 @@
                 {
                     name: "A",
                     type: "Free",
-                    pos: [6, 3],
+                    pos: [5, 3],
                     color: [1.0, 0.0, 0.0],
                     visible: false,
                 },
                 {
                     name: "B",
                     type: "Free",
-                    pos: [6, -3],
+                    pos: [5, -3],
                     color: [1.0, 0.0, 0.0],
                     visible: false,
                 },
                 {
                     name: "C",
                     type: "Free",
-                    pos: [7, 3],
+                    pos: [6, 3],
                     color: [1.0, 0.0, 0.0],
                     visible: false,
                 },
                 {
                     name: "D",
                     type: "Free",
-                    pos: [7, -3],
+                    pos: [6, -3],
                     color: [1.0, 0.0, 0.0],
                     visible: false,
                 },
@@ -92,7 +96,7 @@
                 {
                     name: "E",
                     type: "PointOnSegment",
-                    pos: [6, 1],
+                    pos: [5, 1],
                     color: [1.0, 0.0, 0.0],
                     args: ["a"],
                     labeled: true,
@@ -101,12 +105,73 @@
                 {
                     name: "F",
                     type: "PointOnSegment",
-                    pos: [7, 0],
+                    pos: [6, 0],
                     color: [1.0, 0.0, 0.0],
                     args: ["b"],
                     labeled: true,
                     printname: "Störung",
                 },
+                {
+                    name: "G",
+                    type: "Free",
+                    pos: [-5, 3],
+                    color: [1.0, 0.0, 0.0],
+                    visible: false,
+                },
+                {
+                    name: "H",
+                    type: "Free",
+                    pos: [-5, -3],
+                    color: [1.0, 0.0, 0.0],
+                    visible: false,
+                },
+                {
+                    name: "c",
+                    type: "Segment",
+                    color: [0.0, 0.0, 0.0],
+                    args: ["G", "H"],
+                    size: 3,
+                },
+                {
+                    name: "K",
+                    type: "PointOnSegment",
+                    pos: [-5, -3],
+                    color: [1.0, 0.0, 0.0],
+                    args: ["c"],
+                    labeled: true,
+                    printname: "Skalierung",
+                },
+                {
+                    name: "O",
+                    type: "Free",
+                    pos: [-6, 3],
+                    color: [1.0, 0.0, 0.0],
+                    visible: false,
+                },
+                {
+                    name: "P",
+                    type: "Free",
+                    pos: [-6, -3],
+                    color: [1.0, 0.0, 0.0],
+                    visible: false,
+                },
+                {
+                    name: "d",
+                    type: "Segment",
+                    color: [0.0, 0.0, 0.0],
+                    args: ["O", "P"],
+                    size: 3,
+                },
+                {
+                    name: "Q",
+                    type: "PointOnSegment",
+                    pos: [-6, -3],
+                    color: [1.0, 0.0, 0.0],
+                    args: ["d"],
+                    labeled: true,
+                    printname: "Farben",
+                },
+
             ],
             ports: [
                 {
