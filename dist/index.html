@@ -19,12 +19,24 @@
   </head>
   <body class="bg-blue-800">
     <main id="app">
-      <section id="intro">
+      <section id="Einleitung">
         <h1>Phyllotaxis</h1>
+        <h2>Einleitung</h2>
         <p>
-          In diesem Applet soll das Wachstum von Blüten und Knospen dargestellt
-          werden.
+          Mit "Phyllotaxis" bezeichnet man die Anordnung der Blüten und Blätter bei Pflanzen. Diese ist in der
+          Pflanzenwelt vielfältig zu beobachten. Bei wechselständigen Blättern bilden sich oft Spiralmuster:
         </p>
+        <bild src="media/phyllo1.jpg" name="Aloe Polyphylla (Quelle: Wikipedia)">
+          Bei dieser Aloe Polyphylla kann man sehr gut die fünf Spiralen erkennen.<br>
+        </bild>
+        <p>
+          Die Anzahl der Spiralen sind häufig Glieder der Fibonacci-Folge
+          $$\{1,1,2,3,5,8,13,21,33,\ldots\}$$
+          Wir wollen diese Zusammenhänge hier etwas genauer unter Untersuchen.
+        </p>
+      </section>
+      <section id="ErsteVersuche">
+        <h2>Erste Versuche</h2>
        <cs-applet src-prm="./applets/spiralen.html" h-prm="430px">
          In diesem Applet kann man die Anzahl der Strahlen bzw. Spiralen in Abhängigkeit vom Drehwinkelanteil studieren.
          Man gibt dazu den Anteil \(\frac{\alpha}{360°}\) des Drehwinkels \(\alpha\) vom Vollwinkel \(360°\) ein und zählt dann die Strahlen

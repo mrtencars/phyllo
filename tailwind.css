@@ -8,7 +8,7 @@
 	}
 
 	main {
-		@apply container bg-white mx-auto p-2 align-middle;
+		@apply container bg-white p-2;
 	}
 
 	h1 {
@@ -38,6 +38,10 @@
 
 	h4 {
 		@apply mb-1 text-lg text-black italic font-bold;
+	}
+
+	h5 {
+		@apply font-bold text-base mt-1 mx-1 mb-1;
 	}
 
 	p {
@@ -71,6 +75,14 @@
 	.hinweis {}
 
 	.csapplet {
-		@apply mb-2 p-1 text-sm text-black italic;
+		@apply container mb-2 p-1 text-sm text-black italic;
+	}
+
+	.imgcard {
+		@apply container bg-gray-50 max-w-xl rounded overflow-hidden mt-4;
+	}
+
+	.imgtext {
+		@apply text-gray-700 text-sm mx-1 italic;
 	}
 }

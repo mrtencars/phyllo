@@ -64,6 +64,21 @@ Vue.component('Hinweis',{
     }
 })
 
+Vue.component('Bild',{
+    template: '<div class="imgcard">\n' +
+        '    <img class="w-full" :src="srcImage" :alt="imgHeading">\n' +
+        '    <h5>{{name}}</h5>' +
+        '<p class="imgtext"><slot></slot></p>' +
+        '</div>',
+    props: ['src','name'],
+    data() {
+        return {
+            srcImage: this.src,
+            imgHeading: this.name
+        }
+    }
+})
+
 new Vue({
     el: '#app'
 })
