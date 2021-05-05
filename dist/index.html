@@ -34,6 +34,17 @@
           $$\{1,1,2,3,5,8,13,21,33,\ldots\}$$
           Wir wollen diese Zusammenhänge hier etwas genauer unter Untersuchen.
         </p>
+        <section>
+          <h3>Das Modell</h3>
+          <p>
+            Für unsere Betrachtungen nehmen wir an, dass die Blätter oder Blüten immer in einem bestimmten Winkel
+            zu den schon bestehenden Blättern wachsen. Außerdem schiebt sich der Blütenstand mit der Zeit nach Außen.
+          </p>
+          <cs-applet src-prm="./applets/wachstum.html" h-prm="430px">
+          Dieses Applet ist von Mathe-Vital.de: Variiert man die Zeit t, dann kann man erkennen, wie sich die Blätter
+            immer nach einem bestimmten Winkel neu bilden, dort wo auch am meisten Platz ist.
+          </cs-applet>
+        </section>
       </section>
       <section id="ErsteVersuche">
         <h2>Erste Versuche</h2>
@@ -42,107 +53,6 @@
          Man gibt dazu den Anteil \(\frac{\alpha}{360°}\) des Drehwinkels \(\alpha\) vom Vollwinkel \(360°\) ein und zählt dann die Strahlen
          bzw. Spiralen. Z.B. wäre der Anteil von \(\alpha=90°\) genau \(\frac{90°}{360°}=\frac{1}{4}\) von \(360°\).
        </cs-applet>
-      </section>
-
-      <section id="modell">
-        <h2>Das Modell</h2>
-        <p>Wir gehen im folgenden von 2 Eigenschaften aus:</p>
-        <ol>
-          <li>
-            Bei jeder neuen Knospe dreht sich die Konfiguration um einen
-            bestim‚mten Winkel \( \phi_0 \), genannt <i>Divergenzwinkel</i>.
-          </li>
-          <li>
-            Bei jeder neuen Knospe wächst die Konfiguration um einen gewissen
-            radialen Zuwachs \( r_0 \) nach außen.
-          </li>
-        </ol>
-        <p>
-          Damit kann man sagen, dass die Knospen auf einer Spirale angeordnet
-          sind.
-        </p>
-        <section id="secSpiraleZylinder">
-          <h3>Von der Spirale zum Zylinder</h3>
-          <p>
-            Wir nummerieren alle Punkte entgegen der Wachstumsfolge, d.h. der neuste Punkt wird mit \( p_1 \)
-            bezeichnet und der Vorgänger mit \(p_2\), und so weiter. Trägt man diese Punkte dann in ein
-            Koordinatensystem ein, wo die x-Achse dem Winkel und die y-Achse dem Radius entspricht, dann ergibt sich
-            das folgende Bild:
-          </p>
-          <cs-applet src-prm="./applets/spiralezylinder.html" h-prm="720px">Alte Version</cs-applet>
-            <p>Diese Linie ist eine Folge unserer Modellannahme, denn in jedem Schritt wächst sowohl der Winkel als
-            auch der Radius um einen konstanten Wert.</p>
-            <p>Und jetzt kommt der Clou: Winkel sind periodisch, ein Winkel von 720°, also zwei vollen Umdrehungen,
-            entspricht im Endeffekt einem Winkel von 360° bzw. 0°. Ebenso ist ein Winkel von 370° nichts anderes
-            als ein Winkel von 10°. Andererseits kann man man einen Winkel von 190° entgegen des Uhrzeigersinns
-            auch als Winkel von -170° (im Uhrzeigersinn) ansehen. Daraus folgt:</p>
-          <Folgerung>
-              Für jeden Winkel \(\phi>180°\) gibt es (genau) einen Repräsentanten \(-180°<\hat{\phi}\leq 180°\), der
-              die gleiche Lage erzeugt.
-          </Folgerung>
-          <p>
-            Das Aktivieren des Knopfes "Projektion" im obigen Applet bewirkt genau diese Verschiebung: Die Winkel
-            \(\phi_i\) aller Punkte \(p_i\) werden jeweils auf ihre Repräsentanten abgebildet und es entsteht eine
-            zylinderförmige Anordnung von Punkten \(\hat{p}_i\). Der Radius (y-Achse) und der Winkel (x-Achse) eines
-            jeden Zylinderpunktes \(\hat{p}_i\) entspricht damit genau dem Radius und dem Winkel des entsprechenden
-            Punktes \(p_i\).
-          </p>
-          <Definition name="Zylinderprojektion">
-                Die Zuordnung $$ p_i \longmapsto \hat{p}_i $$ nennen wir
-                <dfn id="def-zylinderprojektion">Zylinderprojektion</dfn>.
-            </Definition>
-        </section>
-      </section>
-
-      <section id="zylinderspiralen">
-        <h2>Zylinder und Spiralen</h2>
-        <p>
-          Im ersten Applet sehen wir links ein zylinderförmiges
-          Koordinatensystem: Die x-Achse entspricht dem Drehwinkel und die
-          y-Achse entspricht dem Radius, also dem Abstand einer Knospe zum
-          Mittelpunkt. Das Koordinatensystem hat eine Besonderheit: Weil ein
-          Winkel von 180° genau einem Winkel von -180° entspricht, bleiben alle
-          Punkte immer zwischen diesen beiden Winkeln. Winkel \(\phi=180°+x\)
-          entsprechen Winkel der Form \(\phi=-180°+x\).
-        </p>
-        <p>
-          In der rechten Hälfte sind dann die entsprechenden Punkte bzw. die
-          Punktkonfiguration in der Ebene zu sehen. In diesem Fall sind immer
-          nur Punkte mit einem Radius kleiner als 5 zu sehen. Genau genommen
-          wird ein Punkt im Zylinder mit den Koordinaten \( \left(\phi,r \right)
-          \) auf $$ \left(\phi,r \right) \mapsto z = r\cdot e^{i\cdot\phi}$$ in
-          der (komplexen) Ebene abgebildet. Die Koordinaten \( \left(\phi,r
-          \right) \) werden auch <i>Polarkoordinaten</i>
-          von \(z\) genannt.
-        </p>
-
-        <h3>Erste Versuche</h3>
-        <p>
-          Indem man im Zylinder den roten Punkt bewegt, kann man den
-          Divergenzwinkel \(\phi_0\) und den radialen Zuwachs \(r_0\)
-          einstellen. Es entstehen verschiedene Muster in der Ebene.
-        </p>
-        <Aufgabe>
-            <ol>
-                <li>
-                    Experimentiere mit Divergenzwinkel und radialem Zuwachs. Achte
-                    dabei auf die Form und die Anzahl von Spiralen.</li>
-                <li>
-                    Kannst Du schon Aussagen zur Abhängigkeit der Form und die Anzahl
-                    der Spiralen von Divergenzwinkel und radialem Zuwachs machen</li>
-            </ol>
-            <Hinweis>
-                <ul>
-                    <li>
-                        Die Anzahl und Form der Spiralen hängt anscheinend nicht vom
-                        radialen Zuwachs ab.</li>
-                    <li>
-                        Für manche Winkel gibt drehen sich die Spiralen im Uhrzeigersinn,
-                        für andere drehen sie sich entgegengesetzt.</li>
-                </ul>
-            </Hinweis>
-        </Aufgabe>
-        <cs-applet src-prm="applets/farbspirale.html" h-prm="670px">Alte Version</cs-applet>
       </section>
     </main>
   </body>
