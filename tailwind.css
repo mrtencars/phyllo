@@ -5,10 +5,11 @@
 @layer base {
 	body {
 		counter-reset:section;
+		@apply bg-gray-200;
 	}
 
 	main {
-		@apply container bg-white p-2;
+		@apply container bg-white p-4;
 	}
 
 	h1 {
@@ -22,7 +23,7 @@
 	}
 
 	h2 {
-		@apply mb-3 text-3xl;
+		@apply mt-10 mb-3 text-3xl;
 		counter-reset:subsection;
 	}
 
@@ -49,37 +50,54 @@
 	}
 
 	ol {
-		@apply list-decimal list-inside;
+		@apply list-decimal px-5 mt-3 mb-3 list-outside;
 	}
 
 	ul {
-		@apply list-disc list-inside;
+		@apply list-disc px-5 mt-3 mb-3 list-inside;
 	}
 
 	.aufgabe {
-		@apply bg-aufgabe-100 mb-4 p-2;
+		@apply bg-aufgabe-100 border-2 border-aufgabe-200 mb-4 p-2 rounded;
 	}
 
 	.folgerung {
-		@apply bg-folgerung-200 mb-4 p-2;
+		@apply bg-folgerung-200 border-2 border-folgerung-300 mt-4 mb-4 p-2 rounded;
+	}
+
+	.beweis {
+		@apply bg-beweis-50 mt-4 mb-4 p-10 border-2 border-beweis-200;
+	}
+	.beispiel {
+		@apply bg-beispiel-50 mt-4 mb-4 p-10 border-2 border-beispiel-200;
+	}
+
+	.kasten {
+		@apply bg-kasten-100 mt-4 mb-4 p-2 border-2 border-kasten-300 rounded;
 	}
 
 	.definition {
-		@apply bg-definition-200 mb-4 p-2;
+		@apply bg-definition-200 mb-4 mt-4 p-2 border-2 border-definition-300 rounded;
 	}
 
 	.smallbutton{
-		@apply bg-gray-300 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded;
+		@apply bg-knopf-300 hover:bg-knopf-700 text-white font-bold p-1 rounded;
 	}
 
-	.hinweis {}
+	.knopf {
+		@apply mb-4;
+	}
+
+	.knopfinhalt{
+		@apply p-2 bg-knopf-50 border-2 border-knopf-200;
+	}
 
 	.csapplet {
-		@apply container mb-2 p-1 text-sm text-black italic;
+		@apply container max-w-screen-md mb-5 text-sm text-black italic;
 	}
 
 	.imgcard {
-		@apply container bg-gray-50 max-w-xl rounded overflow-hidden mt-4;
+		@apply container bg-gray-50 max-w-xl rounded overflow-hidden mt-4 mb-4;
 	}
 
 	.imgtext {

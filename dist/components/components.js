@@ -13,10 +13,47 @@ Vue.component('Definition',{
 
 Vue.component('Folgerung',{
     template: '<div class="folgerung">' +
-            '<h4>Folgerung</h4>' +
+            '<h4>{{ name }}</h4>' +
             '<p><slot></slot></p>' +
-        '</div>'
+        '</div>',
+    props: ['name']
 })
+
+Vue.component('Aufgabe',{
+    template: '<div class="aufgabe">' +
+        '<h4>Aufgabe {{ name }}</h4>' +
+        '<p><slot></slot></p>' +
+        '</div>',
+    props: ['name']
+})
+
+Vue.component('Beweis',{
+    template: '<div class="beweis">' +
+        '<h4>{{ name }}</h4>' +
+        '<p><b>Begründung:</b></p>' +
+        '<p><slot></slot></p>' +
+        '<span style="float: right">\\(\\blacksquare\\)</span>' +
+        '</div>',
+    props: ['name']
+})
+
+Vue.component('Beispiel',{
+    template: '<div class="beispiel">' +
+        '<h4><i>Beispiel</i> {{ name }}</h4>' +
+        '<p><slot></slot></p>' +
+        '</div>',
+    props: ['name']
+})
+
+
+Vue.component('Kasten', {
+    template: '<div class="kasten">' +
+        '<h4>{{ name }}</h4>' +
+        '<p><slot></slot></p>' +
+        '</div>',
+    props: ['name']
+})
+
 
 Vue.component('cs-applet',{
     template:'<div class="csapplet">' +
@@ -40,26 +77,22 @@ Vue.component('cs-applet',{
     }
 })
 
-Vue.component('Aufgabe',{
-    template: '<div class="aufgabe"><h4>Aufgabe</h4><p><slot></slot></p></div>'
-})
-
-Vue.component('Hinweis',{
-    template: '<div class="hinweis">\n' +
-        '    <button class="smallbutton" @click="schalteHinweis">Hinweis</button>\n' +
-        '    <div v-if="zeigeHinweis">\n' +
-        '      <h4>Hinweis</h4>\n' +
-        '      <p><slot></slot></p>\n' +
+Vue.component('Knopf',{
+    template: '<div class="knopf">\n' +
+        '    <button class="smallbutton" @click="schalteKnopf">{{ name }}</button>\n' +
+        '    <div v-if="zeigeKnopf" class="knopfinhalt">\n' +
+        '       <p><slot></slot></p>\n' +
         '    </div>\n' +
         '  </div>',
+    props: ['name'],
     data() {
         return {
-            zeigeHinweis: false,
+            zeigeKnopf: false,
         }
     },
     methods: {
-        schalteHinweis(){
-            this.zeigeHinweis = !this.zeigeHinweis
+        schalteKnopf(){
+            this.zeigeKnopf = !this.zeigeKnopf
         }
     }
 })

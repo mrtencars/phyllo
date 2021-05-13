@@ -1,63 +1,350 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
-  <head>
-    <meta charset="utf-8" />
+<head>
+    <meta charset="utf-8"/>
     <title>Phyllotaxis</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/styles.css"/>
 
     <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
     <script
-      id="MathJax-script"
-      async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+            id="MathJax-script"
+            async
+            src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
     ></script>
     <script type="text/x-mathjax-config">
       MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+
+
     </script>
-  </head>
-  <body class="bg-blue-800">
-    <main id="app">
-      <section id="Einleitung">
+</head>
+<body>
+<main id="app">
+    <section id="Einleitung">
         <h1>Phyllotaxis</h1>
         <h2>Einleitung</h2>
         <p>
-          Mit "Phyllotaxis" bezeichnet man die Anordnung der Blüten und Blätter bei Pflanzen. Diese ist in der
-          Pflanzenwelt vielfältig zu beobachten. Bei wechselständigen Blättern bilden sich oft Spiralmuster:
+            Mit "Phyllotaxis" bezeichnet man die Anordnung der Blüten und Blätter bei Pflanzen. Diese ist in der
+            Pflanzenwelt vielfältig zu beobachten. Bei wechselständigen Blättern bilden sich oft Spiralmuster:
         </p>
-        <bild src="media/phyllo1.jpg" name="Aloe Polyphylla (Quelle: Wikipedia)">
-          Bei dieser Aloe Polyphylla kann man sehr gut die fünf Spiralen erkennen.<br>
+        <bild src="media/phyllo1.jpg" name="Aloe Polyphylla">
+            Bei dieser Aloe Polyphylla kann man sehr gut die 5 Spiralen erkennen.<br>
+            (Quelle: https://en.wikipedia.org/wiki/Phyllotaxis)
         </bild>
         <p>
-          Die Anzahl der Spiralen sind häufig Glieder der Fibonacci-Folge
-          $$\{1,1,2,3,5,8,13,21,33,\ldots\}$$
-          Wir wollen diese Zusammenhänge hier etwas genauer unter Untersuchen.
+            Schaut man genau hin, ergeben sich oft mehrere Spiralmuster. Bei diesem Romanesco sieht man ein Muster mit
+            8 Spiralen und ein Muster mit 13 Spiralen. Die Spiralen der beiden Muster sind entgegengesetzt gedreht:
+        </p>
+        <bild src="media/phyllo5.jpg" name="Romanesco (Blumenkohlart)">
+            (Quelle: https://www.mathematik.hu-berlin.de/~neukirch/).
+        </bild>
+        <p>
+            Ähnliches gilt für diese Sonnenblume, hier kann man einerseits 34 Spiralen und andererseits 55 Spiralen in
+            entgegengesetzter Richtung erkennen:
+        </p>
+        <bild src="media/phyllo6.jpg" name="Sonnenblume">
+            (Quelle: https://www.mathematik.hu-berlin.de/~neukirch/)
+        </bild>
+        <p>
+            Und auch bei der Ananas: In der einen Richtung sind es 8 Spiralen und in der anderen Richtung sind es 13
+            Spiralen.
+        </p>
+        <bild src="media/phyllo3.jpg" name="Ananas (von unten)">
+            (Quelle: https://www.mathematik.hu-berlin.de/~neukirch/)
+        </bild>
+        <p>Von der Seite kann man sogar ein drittes Spiralmuster mit 21 Spiralen erkennen:</p>
+        <bild src="media/phyllo4.jpg" name="Ananas">
+            (Quelle: https://www.mathematik.hu-berlin.de/~neukirch/)
+        </bild>
+        <p>
+            Das erstaunliche an der ganzen Sache ist die Tatsache, dass diese Zahlen, also die Anzahl zweier
+            entgegengesetzter
+            Spiralen zwei zwei aufeinanderfolgende Elemente der sogenannten <i><b>Fibonacci-Folge</b></i> sind:
+            $$\{1,1,2,3,5,8,13,21,34,55,\ldots\}$$
+            Die Fibonacci-Folge wird dadurch bestimmt, dass jede weitere Zahl immer die Summe ihrer beiden Vorgänger
+            ist:
+            $$ \begin{eqnarray}
+            2 &=& 1+1 \nonumber \\
+            3 &=& 1+2 \nonumber \\
+            5 &=& 2+3 \nonumber \\
+            8 &=& 3+5 \nonumber \\
+            \vdots &=& \vdots \nonumber \\
+            x_n &=& x_{n-2}+x_{n-1}
+            \end{eqnarray}$$
+            Warum ergeben sich oft solche sehr speziellen Zusammenhänge und woher kennen die Pflanzen
+            die Fibonacci-Zahlen? Dies soll hier etwas genauer untersucht werden.
         </p>
         <section>
-          <h3>Das Modell</h3>
-          <p>
-            Für unsere Betrachtungen nehmen wir an, dass die Blätter oder Blüten immer in einem bestimmten Winkel
-            zu den schon bestehenden Blättern wachsen. Außerdem schiebt sich der Blütenstand mit der Zeit nach Außen.
-          </p>
-          <cs-applet src-prm="./applets/wachstum.html" h-prm="430px">
-          Dieses Applet ist von Mathe-Vital.de: Variiert man die Zeit t, dann kann man erkennen, wie sich die Blätter
-            immer nach einem bestimmten Winkel neu bilden, dort wo auch am meisten Platz ist.
-          </cs-applet>
+            <h3>Das Modell</h3>
+            <p>
+                Die Blattstellung bei Pflanzen unterliegt verschiedenen Mustern. So ist bei wechselständiger
+                Beblätterung der Winkel
+                zwischen zwei aufeinanderfolgenden Blättern meistens gleich (vgl. [Hop], Abschnitt 2.2.2).
+            </p>
+            <bild src="media/divergenzwinkel.png" name="Divergenzwinkel">
+                Der Divergenzwinkel ist der Abstand zwischen zwei aufeinanderfolgenden Blättern.<br>
+                (Bildquelle: https://de.wikipedia.org/wiki/Phyllotaxis)
+            </bild>
+            <Definition name="Divergenzwinkel">
+                Den Winkel, um den die neuen Blüten bzw. Blätter versetzt entstehen, nennen wir <dfn
+                    id="def-divergenzwinkel">
+                Divergenzwinkel</dfn> \(0\leq\alpha<360°\).
+            </Definition>
+            <p>
+                Neben einer Drehung kommt meist auch zu einer vertikalen Bewegung bzw. bei Blüten, z.B. bei der
+                Sonnenblume,
+                zu einer Bewegung nach außen.
+            </p>
+            <p>Diese zwei Charakteristiken sollen im folgenden Applet dargestellt werden:</p>
+            <cs-applet src-prm="./applets/wachstum.html" h-prm="430px">
+                Dieses Applet ist von Mathe-Vital.de. Variiert man die Zeit t, dann kann man erkennen, wie sich die
+                Blätter
+                immer nach einem bestimmten Winkel neu bilden und dabei nach außen wachsen.
+            </cs-applet>
+            <Kasten name="Zusammenfassung">
+                Insgesamt machen wir zwei Annahmen:
+                <ol>
+                    <li>Der Winkel zwischen zwei aufeinanderfolgenden Blättern bzw. Blüten ist immer gleich. Dieser
+                        Winkel heißt
+                        <i>Divergenzwinkel</i></li>
+                    <li>Alle Blätter bzw. Blüten entfernen sich immer mehr vom Ursprung.</li>
+                </ol>
+            </Kasten>
+            Den zweiten Punkt werden wir in einem späteren Teil noch genauer untersuchen. Für unsere nächsten
+            Betrachtungen
+            ist es aber wichtig, noch einen Begriff einzuführen.
+            <Definition name="Kreisteil">
+                Den Anteil des Divergenzwinkels \(\alpha\) am Vollwinkel 360° nennen wir <dfn id="def-kreisteil">Kreisteil </dfn>
+                \(\omega\). D.h. es gilt:
+                $$ \omega = \frac{\alpha}{360°}\;\mbox{ bzw. } \alpha = \omega \cdot 360° $$
+            </Definition>
         </section>
-      </section>
-      <section id="ErsteVersuche">
-        <h2>Erste Versuche</h2>
-       <cs-applet src-prm="./applets/spiralen.html" h-prm="430px">
-         In diesem Applet kann man die Anzahl der Strahlen bzw. Spiralen in Abhängigkeit vom Drehwinkelanteil studieren.
-         Man gibt dazu den Anteil \(\frac{\alpha}{360°}\) des Drehwinkels \(\alpha\) vom Vollwinkel \(360°\) ein und zählt dann die Strahlen
-         bzw. Spiralen. Z.B. wäre der Anteil von \(\alpha=90°\) genau \(\frac{90°}{360°}=\frac{1}{4}\) von \(360°\).
-       </cs-applet>
-      </section>
-    </main>
-  </body>
-  <footer>
+    </section>
+    <section id="StrahlenUndSpiralen">
+        <h2>Von Strahlen und Spiralen</h2>
+        <p>
+            Zunächst wollen wir uns einmal anschauen, wie es eigentlich zu solchen Spiralmustern kommt: Welchen Einfluss
+            hat
+            der Divergenzwinkel bzw. der Kreisteil auf die Anzahl der sichtbaren Spiralen.
+        </p>
+        <section id="WinkelExperimente">
+            <h3>Experimente mit dem Kreisteil bzw. dem Divergenzwinkel</h3>
+            <p>
+                Wir wollen nun einmal schauen, welche Blüten- bzw. Blattformen bei verschiedenen Kreisteilen entstehen.
+                Dazu betrachte man das folgende Applet. In diesem Applet kann man die Anzahl der Strahlen bzw. Spiralen
+                in Abhängigkeit vom Kreisteil studieren. Man gibt dazu den Kreisteil ein und zählt dann die Strahlen
+                bzw. Spiralen.
+            </p>
+            <cs-applet src-prm="./applets/spiralen.html" h-prm="430px">
+                Um zu prüfen, ob man richtig gezählt hat, kann man auch die Anzahl der Farben auf die Anzahl der
+                Spiralen
+                setzen,
+                dann sollte jede Spirale genau eine Farbe haben.
+            </cs-applet>
+            <p>
+                Offenbar entstehen bei \(\omega=\frac{1}{3}\), also \(\alpha=\frac{1}{3}\cdot 360° = 120°\) genau 3
+                Strahlen.
+                Wie sieht dass allgemein für einen Winkel der Form $$\alpha=\frac{p}{q}\cdot 360° \mbox{ bzw. }
+                \omega=\frac{p}{q} \mbox{ mit } p,q\in \mathbb{N}$$
+                aus? Probiere es aus:
+            </p>
+            <Aufgabe name="1">
+                <ol>
+                    <li>
+                        Probiere Winkelanteile der Form
+                        \(\omega=\frac{1}{4},\omega=\frac{1}{8},\omega=\frac{1}{9},\ldots
+                        \). Was würdest Du erwarten?
+                    </li>
+                    <li>
+                        Probiere Winkelanteile der Form
+                        \(\omega=\frac{2}{4},\omega=\frac{6}{8},\omega=\frac{3}{9},\ldots
+                        \). Was würdest Du erwarten?
+                    </li>
+                    <li>
+                        Probiere Winkelanteile der Form
+                        \(\omega=\frac{3}{4},\omega=\frac{11}{8},\omega=\frac{5}{9},\ldots
+                        \). Was würdest Du erwarten?
+                    </li>
+                    <li>
+                        Probiere Winkelanteile der Form
+                        \(\omega=\frac{1}{10},\omega=\frac{1}{20},\omega=\frac{1}{30},\ldots
+                        \). Was würdest Du erwarten?
+                    </li>
+                    <li>
+                        Versuche eine allgemeine Aussage zu formulieren: Ist $$\alpha=\frac{p}{q}\cdot 360° \mbox{ bzw.
+                        }
+                        \omega=\frac{p}{q}$$
+                        dann entstehen jeweils ..... .
+                    </li>
+                </ol>
+            </Aufgabe>
+            <Knopf name="Beobachtungen">Was kann man beobachten:
+                <ol>
+                    <li>Ist der Kreisteil p/q vollständig gekürzt, dann entstehen genau q Strahlen.</li>
+                    <li>Nach genau q Blättern bzw. Blüten ist man wieder über dem ersten Blatt bzw. der ersten Blüte
+                        angekommen.
+                    </li>
+                </ol>
+            </Knopf>
+            <Aufgabe name="2">
+                Störe den Kreisteil bzw. den Divergenzwinkel mit Hilfe des Störungsreglers um einen kleinen Wert. Was
+                kann
+                man erkennen?
+            </Aufgabe>
+            <Knopf name="Beobachtungen">Was kann man beobachten:
+                Wird der Kreisteil bzw. der Divergenzwinkel um einen kleinen Wert gestört, dann werden die Strahlen zu
+                Spiralen.
+            </Knopf>
+            <Aufgabe name="3">
+                Was vermutest Du für \(\omega=\frac{1}{30}\),\(\omega=\frac{7}{30}\) oder \(\omega=\frac{11}{30}\)?
+                Probiere
+                es aus!
+                <br><i>Hinweis: Skaliere dabei auch so, dass einmal sehr wenige und einmal sehr viele Blüten bzw.
+                Blätter
+                sichtbar sind.</i>
+            </Aufgabe>
+            <Knopf name="Beobachtungen">Was kann man beobachten:
+                <ul>
+                    <li>Ist der Nenner q im gekürzten Kreisteil groß, dann lassen sich erst nach einer großen Anzahl von
+                        Blüten bzw. Blättern q Strahlen erkennen.
+                    </li>
+                    <li>Es lassen sich, z.B. beim Kreisteil 7/30 und 11/30 auch eine kleinere Anzahl x<30 von Spiralen
+                        (keine Strahlen!) erkennen.
+                    </li>
+                </ul>
+            </Knopf>
+            <Kasten name="Zusammenfassung der Beobachtungen">
+                Insgesamt konnten wir folgende Eigenschaften beobachten:
+                <ol>
+                    <li>Ist der Kreisteil $$\omega=\frac{p}{q}$$ vollständig gekürzt, dann entstehen genau \(q\)
+                        Strahlen. Gegebenenfalls benötigt man eine höhere Anzahl \(x>10q\) von Blättern bzw. Blüten, um die
+                        Strahlen zu erkennen.
+                    </li>
+                    <li>Stört man den Kreisteil um einen kleinen Wert, dann werden die Strahlen zu Spiralen.</li>
+                    <li>Bei größeren Nennern \(q\) lässt sich manchmal auch eine kleinere Anzahl \(x\) von Spiralen
+                        (nicht Strahlen!) erkennen.
+                    </li>
+                </ol>
+            </Kasten>
+            <section id="Begruendungen">
+                <h3>Erklärungen für unsere Beobachtungen</h3>
+                Wir wollen nun versuchen, die Beobachtungen zu erklären bzw. zu begründen.
+                <Beweis name="Der Nenner des vollständig gekürzten Kreisteils entspricht der Anzahl der Strahlen.">
+                    Dies soll in drei Teilen geschehen:
+                    <ol>
+                        <li>Wir betrachten ein beliebiges Blatt \(x\leq q\), z.B. das 7. Blatt (\(x=7\)). Ist der
+                            Winkelteil
+                            \(\omega=\frac{p}{q}\), dann ergibt
+                            $$q\cdot\frac{p}{q}\cdot 360°=p\cdot 360°$$ ein Vielfaches von 360°, d.h. q Blätter nach dem
+                            7. Blatt ist man wieder über dem 7. Blatt. Ebenso gilt dies nach der doppelten Anzahl \(2q\), der dreifachen Anzahl \(3q\).
+                            Und so entsteht z.B. nach \(10q\) Blättern
+                            mehr ein Strahl "über" dem 7. Blatt, der mindestens 1+10=11 Blätter lang ist. Da die Wahl
+                            des Ausgangsblattes beliebig war, gilt dies für alle Blätter \(x\leq q\).
+                        </li>
+                        <li>Damit entstehen nun mindestens \(q\) Strahlen. Warum aber nicht weniger? Angenommen es wären
+                            weniger, z.B. \(r < q\) Stück. Dann wäre auch
+                            $$r\cdot\frac{p}{q}\cdot 360°=s\cdot 360°$$ ein Vielfaches von 360°, also
+                            $$s=r\cdot\frac{p}{q}$$
+                            eine natürliche Zahl. Teilt man durch \(r\) ergibt sich
+                            $$\omega=\frac{p}{q}=\frac{s}{r}$$
+                            Damit lässt sich \(\omega\) aber durch einen Bruch mit kleinerem Nenner \(r < q \)
+                            darstellen. Dies ist ein Widerspruch zur Annahme, dass \(\frac{p}{q}\) vollständig gekürzt ist. D.h. es können nicht
+                            weniger als \(q\) Strahlen entstehen.
+                        </li>
+                        <li>Und warum entstehen nicht mehr als q Strahlen? Weil das q+1-te Blatt schon wieder über dem
+                            1-ten Blatt liegt und damit schon zum ersten Strahl gehört. Ähnliches gilt natürlich für alle folgenden
+                            Blätter auch.
+                        </li>
+                    </ol>
+                    <p>Insgesamt haben wir damit begründet, warum es genau \(q\) Strahlen gibt.</p>
+                </Beweis>
+                <Beweis name="Bei kleinen Störungen ergeben sich Spiralen">
+                    Stört man den Kreisteil um einen kleinen Wert, z.B.
+                    $$\omega_2=\frac{p}{q} + 0.001$$
+                    dann erhält man nach genau q Blättern einen Gesamtwinkel von
+                    $$ q \cdot \alpha_2= q \cdot (\frac{p}{q}+0.001) \cdot 360° = \underbrace{p\cdot 360°}_{q \mbox{
+                    Volldrehungen}} + q \cdot 0,36°$$
+                    Damit ist man nicht mehr direkt über dem Ausgangsblatt, sondern um einen Winkel \(q \cdot 0,36°\)
+                    versetzt. Diese Störung bewirkt, wenn sie klein genug ist, die Form von Spiralen, da die einzelnen Blätter des ursprünglichen
+                    Strahles immer leicht versetzt werden. Ist die Störung zu groß, dann können unsere Augen bzw. unser Gehirn diese versetzten Blätter nicht mehr als Spirale erkennen.
+                </Beweis>
+                <Beweis name="Ist der Nenner des Kreisteils größer, dann kann man Spiralen erkennen">
+                    Wie wir gerade gesehen haben, entstehen Spiralen durch Störungen gebrochener Kreisteile der Form
+                    \(\frac{p}{q}+x\). Sind also weniger als q Spiralen erkennbar, sagen wir \(q_2 < q\), dann muss es einen vollständig
+                    gekürzten Bruch \(\frac{p_2}{q_2}\) geben, so dass:
+                    $$\omega=\frac{p}{q}=\frac{p_2}{q_2}+x \mbox{ bzw. } \frac{p}{q}\approx \frac{p_2}{q_2} $$
+                    Und je größer \(q\) ist, desto größer ist auch die Wahrscheinlichkeit, einen solchen zweiten Bruch zu finden.
+                </Beweis>
+                <p>Die letzte Aussage bzw. Erkenntnis wollen wir nochmal besonders hervorheben:</p>
+                <Folgerung name="Erkenntnis">
+                    Sieht man bei einem Kreisteil \(\omega=\frac{p}{q}\)
+                    eine Anzahl von \(q_2 < q\) Spiralen, dann muss es einen vollständig gekürzten Bruch
+                    \(\frac{p_2}{q_2}\)
+                    geben, so dass:
+                    $$ \frac{p}{q}\approx \frac{p_2}{q_2} \mbox{ mit } q_2 < q $$
+                </Folgerung>
+                <Beispiel name="1">Für das obige Beispiel \(\omega=\frac{7}{30}\) gilt einerseits
+                    $$ \begin{eqnarray}
+                    \frac{7}{30} &=& 0,2\bar{3} \nonumber \\
+                    &\approx& 0,25 \nonumber \\
+                    &=& 1/4 \nonumber
+                    \end{eqnarray}
+                    $$
+                    und andererseits
+                    $$ \begin{eqnarray}
+                    \frac{7}{30} &=& 0,2\bar{3} \nonumber \\
+                    &\approx& 0,2307692308 \nonumber \\
+                    &=& 3/13 \nonumber
+                    \end{eqnarray}
+                    $$
+                    D.h. man kann bei dem Kreisteil \(\omega=\frac{7}{30}\) sowohl 4 als auch 13 Spiralen erkennen
+                    (ausprobieren!).
+                </Beispiel>
+                <Beispiel name="2">Und ganz analog gilt für den Kreisteil \(\omega=\frac{11}{30}\) einerseits
+                    $$ \begin{eqnarray}
+                    \frac{11}{30} &=& 0,3\bar{6} \nonumber \\
+                    &\approx& 0,3\bar{3} \nonumber \\
+                    &=&  1/3 \nonumber
+                    \end{eqnarray}
+                    $$
+                    oder
+                    $$ \begin{eqnarray}
+                    \frac{11}{30} &=& 0,3\bar{6} \nonumber \\
+                    &\approx& 0,375 \nonumber \\
+                    &=& 3/8 \nonumber
+                    \end{eqnarray}
+                    $$
+                    oder noch genauer:
+                    $$ \begin{eqnarray}
+                    \frac{11}{30} &=& 0,3\bar{6} \nonumber \\
+                    &\approx& 0,\bar{36} \nonumber \\
+                    &=& 4/11 \nonumber
+                    \end{eqnarray}
+                    $$
+                    D.h. man kann bei dem Kreisteil \(\omega=\frac{1}{30}\) auch 3, 8 und 11 Spiralen erkennen
+                    (ausprobieren!).
+                </Beispiel>
+                <Kasten name="Ziel und Ausblick" farbe="#121212">
+                    Um die Anzahl von Spiralen herauszufinden, müssen wir also eine Möglichkeit haben, Brüche mit
+                    möglichst kleinem Nenner in der Umgebung eines Kreisteils herauszufinden. Wie das geht, werden wir uns im
+                    nächsten Teil genauer anschauen.
+                </Kasten>
+            </section>
+        </section>
+        <section id="Literatur">
+            <h3>Literatur</h3>
+            <p>
+                <a href="http://www.biologie.uni-ulm.de/lehre/botanik/index.html" target="_blank">[Hop]</a>
+                Morphologie, Anatomie und Systematik der Höheren Pflanzen J.R. Hoppe, Systematische Botanik und
+                Ökologie, Universität Ulm
+            </p>
+        </section>
+    </section>
+</main>
+</body>
+<footer>
     <script src="https://unpkg.com/vue"></script>
     <script src="components/components.js"></script>
-  </footer>
+</footer>
 </html>

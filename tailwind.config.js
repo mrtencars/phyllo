@@ -12,9 +12,13 @@ module.exports = {
     },
     extend: {
       colors: {
-        aufgabe: colors.yellow,
-        folgerung: colors.indigo,
-        definition: colors.fuchsia,
+        aufgabe: colors.gray,
+        folgerung: colors.yellow,
+        definition: colors.green,
+        kasten: colors.blue,
+        beweis: colors.gray,
+        beispiel: colors.gray,
+        knopf: colors.gray
       }
     },
   },
