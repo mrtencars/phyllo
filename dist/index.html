@@ -4,7 +4,7 @@
     <title>Phyllotaxis</title>
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/styles.css"/>
+    <link rel="stylesheet" href="./css/styles.css"/>
 
     <!-- MathJax -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
@@ -107,7 +107,7 @@
                 <ol>
                     <li>Der Winkel zwischen zwei aufeinanderfolgenden Blättern bzw. Blüten ist immer gleich. Dieser
                         Winkel heißt
-                        <i>Divergenzwinkel</i></li>
+                        <i>Divergenzwinkel</i></li>.
                     <li>Alle Blätter bzw. Blüten entfernen sich immer mehr vom Ursprung.</li>
                 </ol>
             </Kasten>
@@ -125,8 +125,7 @@
         <h2>Von Strahlen und Spiralen</h2>
         <p>
             Zunächst wollen wir uns einmal anschauen, wie es eigentlich zu solchen Spiralmustern kommt: Welchen Einfluss
-            hat
-            der Divergenzwinkel bzw. der Kreisteil auf die Anzahl der sichtbaren Spiralen.
+            hat der Divergenzwinkel bzw. der Kreisteil auf die Anzahl der sichtbaren Spiralen?
         </p>
         <section id="WinkelExperimente">
             <h3>Experimente mit dem Kreisteil bzw. dem Divergenzwinkel</h3>
@@ -138,15 +137,12 @@
             </p>
             <cs-applet src-prm="./applets/spiralen.html" h-prm="430px">
                 Um zu prüfen, ob man richtig gezählt hat, kann man auch die Anzahl der Farben auf die Anzahl der
-                Spiralen
-                setzen,
-                dann sollte jede Spirale genau eine Farbe haben.
+                Spiralen setzen, dann sollte jede Spirale genau eine Farbe haben.
             </cs-applet>
             <p>
                 Offenbar entstehen bei \(\omega=\frac{1}{3}\), also \(\alpha=\frac{1}{3}\cdot 360° = 120°\) genau 3
-                Strahlen.
-                Wie sieht dass allgemein für einen Winkel der Form $$\alpha=\frac{p}{q}\cdot 360° \mbox{ bzw. }
-                \omega=\frac{p}{q} \mbox{ mit } p,q\in \mathbb{N}$$
+                Strahlen. Wie sieht dass allgemein für einen Winkel der Form
+                $$\alpha=\frac{p}{q}\cdot 360° \mbox{ bzw. } \omega=\frac{p}{q} \mbox{ mit } p,q\in \mathbb{N}$$
                 aus? Probiere es aus:
             </p>
             <Aufgabe name="1">
@@ -158,53 +154,44 @@
                     </li>
                     <li>
                         Probiere Winkelanteile der Form
-                        \(\omega=\frac{2}{4},\omega=\frac{6}{8},\omega=\frac{3}{9},\ldots
-                        \). Was würdest Du erwarten?
+                        \(\omega=\frac{2}{4},\omega=\frac{6}{8},\omega=\frac{3}{9},\ldots \).
+                        Was würdest Du erwarten?
                     </li>
                     <li>
                         Probiere Winkelanteile der Form
-                        \(\omega=\frac{3}{4},\omega=\frac{11}{8},\omega=\frac{5}{9},\ldots
-                        \). Was würdest Du erwarten?
+                        \(\omega=\frac{3}{4},\omega=\frac{11}{8},\omega=\frac{5}{9},\ldots \).
+                        Was würdest Du erwarten?
                     </li>
                     <li>
                         Probiere Winkelanteile der Form
-                        \(\omega=\frac{1}{10},\omega=\frac{1}{20},\omega=\frac{1}{30},\ldots
-                        \). Was würdest Du erwarten?
+                        \(\omega=\frac{1}{10},\omega=\frac{1}{20},\omega=\frac{1}{30},\ldots \).
+                        Was würdest Du erwarten?
                     </li>
                     <li>
-                        Versuche eine allgemeine Aussage zu formulieren: Ist $$\alpha=\frac{p}{q}\cdot 360° \mbox{ bzw.
-                        }
-                        \omega=\frac{p}{q}$$
+                        Versuche eine allgemeine Aussage zu formulieren: Ist
+                        $$\alpha=\frac{p}{q}\cdot 360° \mbox{ bzw. } \omega=\frac{p}{q}$$
                         dann entstehen jeweils ..... .
                     </li>
                 </ol>
             </Aufgabe>
-            <Knopf name="Beobachtungen">Was kann man beobachten:
-                <ol>
-                    <li>Ist der Kreisteil p/q vollständig gekürzt, dann entstehen genau q Strahlen.</li>
-                    <li>Nach genau q Blättern bzw. Blüten ist man wieder über dem ersten Blatt bzw. der ersten Blüte
-                        angekommen.
-                    </li>
-                </ol>
+            <Knopf name="Beobachtungen">
+                Ist der Kreisteil p/q vollständig gekürzt, dann entstehen genau q Strahlen.
             </Knopf>
             <Aufgabe name="2">
                 Störe den Kreisteil bzw. den Divergenzwinkel mit Hilfe des Störungsreglers um einen kleinen Wert. Was
-                kann
-                man erkennen?
+                kann man erkennen?
             </Aufgabe>
-            <Knopf name="Beobachtungen">Was kann man beobachten:
+            <Knopf name="Beobachtungen">
                 Wird der Kreisteil bzw. der Divergenzwinkel um einen kleinen Wert gestört, dann werden die Strahlen zu
                 Spiralen.
             </Knopf>
             <Aufgabe name="3">
                 Was vermutest Du für \(\omega=\frac{1}{30}\),\(\omega=\frac{7}{30}\) oder \(\omega=\frac{11}{30}\)?
-                Probiere
-                es aus!
+                Probiere es aus!
                 <br><i>Hinweis: Skaliere dabei auch so, dass einmal sehr wenige und einmal sehr viele Blüten bzw.
-                Blätter
-                sichtbar sind.</i>
+                Blätter sichtbar sind.</i>
             </Aufgabe>
-            <Knopf name="Beobachtungen">Was kann man beobachten:
+            <Knopf name="Beobachtungen">
                 <ul>
                     <li>Ist der Nenner q im gekürzten Kreisteil groß, dann lassen sich erst nach einer großen Anzahl von
                         Blüten bzw. Blättern q Strahlen erkennen.
@@ -218,10 +205,10 @@
                 Insgesamt konnten wir folgende Eigenschaften beobachten:
                 <ol>
                     <li>Ist der Kreisteil $$\omega=\frac{p}{q}$$ vollständig gekürzt, dann entstehen genau \(q\)
-                        Strahlen. Gegebenenfalls benötigt man eine höhere Anzahl \(x>10q\) von Blättern bzw. Blüten, um die
+                        Strahlen. Gegebenenfalls benötigt man eine höhere Anzahl von Blättern bzw. Blüten, um die
                         Strahlen zu erkennen.
                     </li>
-                    <li>Stört man den Kreisteil um einen kleinen Wert, dann werden die Strahlen zu Spiralen.</li>
+                    <li>Verändert man den Kreisteil um einen kleinen Wert, dann werden die Strahlen zu Spiralen.</li>
                     <li>Bei größeren Nennern \(q\) lässt sich manchmal auch eine kleinere Anzahl \(x\) von Spiralen
                         (nicht Strahlen!) erkennen.
                     </li>
@@ -230,21 +217,27 @@
             <section id="Begruendungen">
                 <h3>Erklärungen für unsere Beobachtungen</h3>
                 Wir wollen nun versuchen, die Beobachtungen zu erklären bzw. zu begründen.
-                <Beweis name="Der Nenner des vollständig gekürzten Kreisteils entspricht der Anzahl der Strahlen.">
-                    Dies soll in drei Teilen geschehen:
+                <Folgerung name="Eigenschaft 1">
+                    Ist der Kreisteil $$\omega=\frac{p}{q}$$ vollständig gekürzt, dann entstehen genau \(q\) Strahlen. <br>
+                    <i>Hinweis: Um die Strahlen erahnen zu können, sollten es mehr als \(3\cdot q\) Blätter sein.</i>
+                </Folgerung>
+                <Beweis>
+                    Dies soll in zwei Teilen geschehen:
                     <ol>
-                        <li>Wir betrachten ein beliebiges Blatt \(x\leq q\), z.B. das 7. Blatt (\(x=7\)). Ist der
-                            Winkelteil
-                            \(\omega=\frac{p}{q}\), dann ergibt
-                            $$q\cdot\frac{p}{q}\cdot 360°=p\cdot 360°$$ ein Vielfaches von 360°, d.h. q Blätter nach dem
-                            7. Blatt ist man wieder über dem 7. Blatt. Ebenso gilt dies nach der doppelten Anzahl \(2q\), der dreifachen Anzahl \(3q\).
-                            Und so entsteht z.B. nach \(10q\) Blättern
-                            mehr ein Strahl "über" dem 7. Blatt, der mindestens 1+10=11 Blätter lang ist. Da die Wahl
-                            des Ausgangsblattes beliebig war, gilt dies für alle Blätter \(x\leq q\).
+                        <li><i>Es entstehen höchstens q Strahlen:</i><br>
+                            Wir betrachten ein beliebiges Blatt \(x\leq q\), z.B. das 7. Blatt (\(x=7\)). Ist der
+                            Winkelteil \(\omega=\frac{p}{q}\), dann ist das \((7+q)\)-te Blatt um den Winkel
+                            $$q\cdot\frac{p}{q}\cdot 360°=p\cdot 360°,$$
+                            also einem Vielfachen von 360° gedreht, d.h. q Blätter nach dem 7. Blatt ist man wieder
+                            über dem 7. Blatt. Ebenso gilt dies nach der doppelten Anzahl \(2q\), der dreifachen
+                            Anzahl \(3q\). Und so entsteht z.B. nach \(3q\) Blättern mehr ein Strahl "über"
+                            dem 7. Blatt, der mindestens 1+3=4 Blätter lang ist. Da die Wahl des Ausgangsblattes
+                            beliebig war, gilt dies für alle Blätter \(1,2,\ldots,q\).
                         </li>
-                        <li>Damit entstehen nun mindestens \(q\) Strahlen. Warum aber nicht weniger? Angenommen es wären
-                            weniger, z.B. \(r < q\) Stück. Dann wäre auch
-                            $$r\cdot\frac{p}{q}\cdot 360°=s\cdot 360°$$ ein Vielfaches von 360°, also
+                        <li><i>Bei einem vollständig gekürzten Kreisteil können es nicht weniger als q Strahlen sein:</i><br>
+                            Angenommen es wären weniger, z.B. \(r < q\) Stück. Dann wäre auch
+                            $$r\cdot\frac{p}{q}\cdot 360°=s\cdot 360°$$
+                            ein Vielfaches von 360°, also
                             $$s=r\cdot\frac{p}{q}$$
                             eine natürliche Zahl. Teilt man durch \(r\) ergibt sich
                             $$\omega=\frac{p}{q}=\frac{s}{r}$$
@@ -252,39 +245,28 @@
                             darstellen. Dies ist ein Widerspruch zur Annahme, dass \(\frac{p}{q}\) vollständig gekürzt ist. D.h. es können nicht
                             weniger als \(q\) Strahlen entstehen.
                         </li>
-                        <li>Und warum entstehen nicht mehr als q Strahlen? Weil das q+1-te Blatt schon wieder über dem
-                            1-ten Blatt liegt und damit schon zum ersten Strahl gehört. Ähnliches gilt natürlich für alle folgenden
-                            Blätter auch.
-                        </li>
                     </ol>
                     <p>Insgesamt haben wir damit begründet, warum es genau \(q\) Strahlen gibt.</p>
                 </Beweis>
-                <Beweis name="Bei kleinen Störungen ergeben sich Spiralen">
-                    Stört man den Kreisteil um einen kleinen Wert, z.B.
-                    $$\omega_2=\frac{p}{q} + 0.001$$
-                    dann erhält man nach genau q Blättern einen Gesamtwinkel von
-                    $$ q \cdot \alpha_2= q \cdot (\frac{p}{q}+0.001) \cdot 360° = \underbrace{p\cdot 360°}_{q \mbox{
-                    Volldrehungen}} + q \cdot 0,36°$$
-                    Damit ist man nicht mehr direkt über dem Ausgangsblatt, sondern um einen Winkel \(q \cdot 0,36°\)
-                    versetzt. Diese Störung bewirkt, wenn sie klein genug ist, die Form von Spiralen, da die einzelnen Blätter des ursprünglichen
-                    Strahles immer leicht versetzt werden. Ist die Störung zu groß, dann können unsere Augen bzw. unser Gehirn diese versetzten Blätter nicht mehr als Spirale erkennen.
-                </Beweis>
-                <Beweis name="Ist der Nenner des Kreisteils größer, dann kann man Spiralen erkennen">
-                    Wie wir gerade gesehen haben, entstehen Spiralen durch Störungen gebrochener Kreisteile der Form
-                    \(\frac{p}{q}+x\). Sind also weniger als q Spiralen erkennbar, sagen wir \(q_2 < q\), dann muss es einen vollständig
-                    gekürzten Bruch \(\frac{p_2}{q_2}\) geben, so dass:
-                    $$\omega=\frac{p}{q}=\frac{p_2}{q_2}+x \mbox{ bzw. } \frac{p}{q}\approx \frac{p_2}{q_2} $$
-                    Und je größer \(q\) ist, desto größer ist auch die Wahrscheinlichkeit, einen solchen zweiten Bruch zu finden.
-                </Beweis>
-                <p>Die letzte Aussage bzw. Erkenntnis wollen wir nochmal besonders hervorheben:</p>
-                <Folgerung name="Erkenntnis">
-                    Sieht man bei einem Kreisteil \(\omega=\frac{p}{q}\)
-                    eine Anzahl von \(q_2 < q\) Spiralen, dann muss es einen vollständig gekürzten Bruch
-                    \(\frac{p_2}{q_2}\)
-                    geben, so dass:
-                    $$ \frac{p}{q}\approx \frac{p_2}{q_2} \mbox{ mit } q_2 < q $$
+                <Folgerung name="Eigenschaft 2">
+                    Man sieht genau dann q Spiralen, wenn der Kreisteil \(\omega\) nur <u>fast</u> einem vollständig
+                    gekürzten Bruch \(\frac{p}{q}\) entspricht. <br>
+                    <i>Hinweis: Um die Spiralen erahnen zu können, sollten es mehr als \(3\cdot q\) Blätter sein.</i>
                 </Folgerung>
-                <Beispiel name="1">Für das obige Beispiel \(\omega=\frac{7}{30}\) gilt einerseits
+                <Beweis>
+                    Man sieht offenbar genau dann q Spiralen, wenn eine Drehung um \( q\cdot \omega \cdot 360° \) nur
+                    <u>fast</u> einer p-fachen Volldrehung entspricht, d.h.
+                    $$ q\cdot\omega\cdot 360° \approx p \cdot 360° $$
+                    Teilt man auf beiden Seiten durch \(q\cdot 360°\), dann ist dies äquivalent zu
+                    $$ \omega \approx \frac{p}{q} .$$
+                </Beweis>
+                <h3>Beispiele</h3>
+                In der obigen Aufgabe 3 haben wir gesehen, dass man trotz eines Kreisteils der Form \(\omega=\frac{7}{30}\)
+                oder \(\omega=\frac{11}{30}\) jeweils eine gewisse Anzahl von q < 30 Spiralen  erkennen kann. Aus Eigenschaft 2
+                folgt dann, dass es Brüche der Form
+                $$ \frac{p}{q}\approx \frac{7}{30} \mbox{ bzw. } \frac{p}{q}\approx \frac{11}{30} $$
+                geben muss:
+                <Beispiel name="\(\omega=\frac{7}{30}\)">Hier gilt einerseits
                     $$ \begin{eqnarray}
                     \frac{7}{30} &=& 0,2\bar{3} \nonumber \\
                     &\approx& 0,25 \nonumber \\
@@ -301,7 +283,13 @@
                     D.h. man kann bei dem Kreisteil \(\omega=\frac{7}{30}\) sowohl 4 als auch 13 Spiralen erkennen
                     (ausprobieren!).
                 </Beispiel>
-                <Beispiel name="2">Und ganz analog gilt für den Kreisteil \(\omega=\frac{11}{30}\) einerseits
+                <h4>Bemerkung</h4>
+                <p>Es gilt natürlich auch
+                    $$\frac{7}{30} =  0,2\bar{3}\approx 0,23 = \frac{23}{100},$$
+                    d.h. nach Eigenschaft 2 würde man auch 100 Spiralen erkennen, jedoch benötigt man dafür mindestens
+                    \(3\cdot 100 = 300\) Blätter, um die Spiralen erahnen zu können.
+                </p>
+                <Beispiel name="\(\omega=\frac{11}{30}\)">Hier gilt
                     $$ \begin{eqnarray}
                     \frac{11}{30} &=& 0,3\bar{6} \nonumber \\
                     &\approx& 0,3\bar{3} \nonumber \\
@@ -325,6 +313,11 @@
                     D.h. man kann bei dem Kreisteil \(\omega=\frac{1}{30}\) auch 3, 8 und 11 Spiralen erkennen
                     (ausprobieren!).
                 </Beispiel>
+                <p>Es gilt natürlich auch hier
+                    $$\frac{11}{30} =  0,3\bar{6}\approx 0,37 = \frac{37}{100},$$
+                    d.h. nach Eigenschaft 2 würde man auch 100 Spiralen erkennen, jedoch benötigt man dafür auch
+                    mindestens \(3\cdot 100 = 300\) Blätter, um Spiralen erahnen zu können.
+                </p>
                 <Kasten name="Ziel und Ausblick" farbe="#121212">
                     Um die Anzahl von Spiralen herauszufinden, müssen wir also eine Möglichkeit haben, Brüche mit
                     möglichst kleinem Nenner in der Umgebung eines Kreisteils herauszufinden. Wie das geht, werden wir uns im

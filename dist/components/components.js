@@ -39,7 +39,7 @@ Vue.component('Beweis',{
 
 Vue.component('Beispiel',{
     template: '<div class="beispiel">' +
-        '<h4><i>Beispiel</i> {{ name }}</h4>' +
+        '<h4><i>Beispiel: </i> {{ name }}</h4>' +
         '<p><slot></slot></p>' +
         '</div>',
     props: ['name']
