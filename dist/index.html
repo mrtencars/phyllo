@@ -92,22 +92,22 @@
                 Divergenzwinkel</dfn> \(0\leq\alpha<360°\).
             </Definition>
             <p>
-                Neben einer Drehung kommt meist auch zu einer vertikalen Bewegung bzw. bei Blüten, z.B. bei der
-                Sonnenblume,
-                zu einer Bewegung nach außen.
+                Neben einer Drehung kommt es meist auch zu einer vertikalen Bewegung bzw. bei Blüten, z.B. bei der
+                Sonnenblume, zu einer Bewegung nach außen.
             </p>
             <p>Diese zwei Charakteristiken sollen im folgenden Applet dargestellt werden:</p>
             <cs-applet src-prm="./applets/wachstum.html" h-prm="430px">
                 Dieses Applet ist von Mathe-Vital.de. Variiert man die Zeit t, dann kann man erkennen, wie sich die
-                Blätter
-                immer nach einem bestimmten Winkel neu bilden und dabei nach außen wachsen.
+                Blätter immer nach einem bestimmten Winkel neu bilden und dabei nach außen wachsen.
             </cs-applet>
             <Kasten name="Zusammenfassung">
                 Insgesamt machen wir zwei Annahmen:
                 <ol>
-                    <li>Der Winkel zwischen zwei aufeinanderfolgenden Blättern bzw. Blüten ist immer gleich. Dieser
+                    <li>
+                        Der Winkel zwischen zwei aufeinanderfolgenden Blättern bzw. Blüten ist immer gleich. Dieser
                         Winkel heißt
-                        <i>Divergenzwinkel</i></li>.
+                        <i>Divergenzwinkel</i>.
+                    </li>
                     <li>Alle Blätter bzw. Blüten entfernen sich immer mehr vom Ursprung.</li>
                 </ol>
             </Kasten>
@@ -130,10 +130,9 @@
         <section id="WinkelExperimente">
             <h3>Experimente mit dem Kreisteil bzw. dem Divergenzwinkel</h3>
             <p>
-                Wir wollen nun einmal schauen, welche Blüten- bzw. Blattformen bei verschiedenen Kreisteilen entstehen.
-                Dazu betrachte man das folgende Applet. In diesem Applet kann man die Anzahl der Strahlen bzw. Spiralen
-                in Abhängigkeit vom Kreisteil studieren. Man gibt dazu den Kreisteil ein und zählt dann die Strahlen
-                bzw. Spiralen.
+                Zum Studium der Beziehung zwischen Blütenmustern und Divergenzwinkel betrachte man das folgende Applet.
+                Dort kann man die Anzahl der Strahlen bzw. Spiralen in Abhängigkeit vom experimentell erfahren:
+                Man gibt zunächst den Kreisteil \(\omega\) ein und zählt dann die dabei entstandenen Strahlen bzw. Spiralen.
             </p>
             <cs-applet src-prm="./applets/spiralen.html" h-prm="430px">
                 Um zu prüfen, ob man richtig gezählt hat, kann man auch die Anzahl der Farben auf die Anzahl der
@@ -250,22 +249,24 @@
                 </Beweis>
                 <Folgerung name="Eigenschaft 2">
                     Man sieht genau dann q Spiralen, wenn der Kreisteil \(\omega\) nur <u>fast</u> einem vollständig
-                    gekürzten Bruch \(\frac{p}{q}\) entspricht. <br>
+                    gekürzten Bruch der Form \(\frac{p}{q}\) entspricht. <br>
                     <i>Hinweis: Um die Spiralen erahnen zu können, sollten es mehr als \(3\cdot q\) Blätter sein.</i>
                 </Folgerung>
                 <Beweis>
-                    Man sieht offenbar genau dann q Spiralen, wenn eine Drehung um \( q\cdot \omega \cdot 360° \) nur
-                    <u>fast</u> einer p-fachen Volldrehung entspricht, d.h.
+                    Man sieht offenbar genau dann q Spiralen, wenn eine q-fache Drehung um den Divergenzwinkel \(\alpha\),
+                    also um
+                    $$ q\cdot \alpha= q\cdot \omega \cdot 360°, $$
+                    nur <u>fast</u> einer p-fachen Volldrehung entspricht, d.h.
                     $$ q\cdot\omega\cdot 360° \approx p \cdot 360° $$
                     Teilt man auf beiden Seiten durch \(q\cdot 360°\), dann ist dies äquivalent zu
                     $$ \omega \approx \frac{p}{q} .$$
                 </Beweis>
                 <h3>Beispiele</h3>
-                In der obigen Aufgabe 3 haben wir gesehen, dass man trotz eines Kreisteils der Form \(\omega=\frac{7}{30}\)
-                oder \(\omega=\frac{11}{30}\) jeweils eine gewisse Anzahl von q < 30 Spiralen  erkennen kann. Aus Eigenschaft 2
-                folgt dann, dass es Brüche der Form
+                In der obigen Aufgabe 3 haben wir gesehen, dass man bei einem Kreisteils der Form \(\omega=\frac{7}{30}\)
+                oder \(\omega=\frac{11}{30}\) nicht nur 30 Strahlen, sondern jeweils auch eine gewisse Anzahl
+                von q < 30 Spiralen erkennen kann. Aus Eigenschaft 2 folgt dann, dass es Brüche der Form
                 $$ \frac{p}{q}\approx \frac{7}{30} \mbox{ bzw. } \frac{p}{q}\approx \frac{11}{30} $$
-                geben muss:
+                geben muss.
                 <Beispiel name="\(\omega=\frac{7}{30}\)">Hier gilt einerseits
                     $$ \begin{eqnarray}
                     \frac{7}{30} &=& 0,2\bar{3} \nonumber \\
@@ -284,10 +285,11 @@
                     (ausprobieren!).
                 </Beispiel>
                 <h4>Bemerkung</h4>
-                <p>Es gilt natürlich auch
+                <p>
+                    Es gilt natürlich auch
                     $$\frac{7}{30} =  0,2\bar{3}\approx 0,23 = \frac{23}{100},$$
                     d.h. nach Eigenschaft 2 würde man auch 100 Spiralen erkennen, jedoch benötigt man dafür mindestens
-                    \(3\cdot 100 = 300\) Blätter, um die Spiralen erahnen zu können.
+                    \(3\cdot 100 = 300\) Blätter, um diese erahnen zu können.
                 </p>
                 <Beispiel name="\(\omega=\frac{11}{30}\)">Hier gilt
                     $$ \begin{eqnarray}
@@ -313,15 +315,27 @@
                     D.h. man kann bei dem Kreisteil \(\omega=\frac{1}{30}\) auch 3, 8 und 11 Spiralen erkennen
                     (ausprobieren!).
                 </Beispiel>
-                <p>Es gilt natürlich auch hier
+                <p>
+                    Es gilt natürlich auch hier
                     $$\frac{11}{30} =  0,3\bar{6}\approx 0,37 = \frac{37}{100},$$
                     d.h. nach Eigenschaft 2 würde man auch 100 Spiralen erkennen, jedoch benötigt man dafür auch
-                    mindestens \(3\cdot 100 = 300\) Blätter, um Spiralen erahnen zu können.
+                    mindestens \(3\cdot 100 = 300\) Blätter, um diese erahnen zu können.
                 </p>
-                <Kasten name="Ziel und Ausblick" farbe="#121212">
-                    Um die Anzahl von Spiralen herauszufinden, müssen wir also eine Möglichkeit haben, Brüche mit
-                    möglichst kleinem Nenner in der Umgebung eines Kreisteils herauszufinden. Wie das geht, werden wir uns im
-                    nächsten Teil genauer anschauen.
+                <Folgerung name="Folgerung in Bezug auf die Fibonacci-Zahlen">
+                    Mit der Eigenschaft 2 können wir jetzt schon sagen, dass der Kreisteil \(\omega\) bei einer Sonnenblume
+                    oder einer Ananas in der Nähe von gebrochenen Zahlen \(\frac{p}{q}\) liegt, deren Nenner \(q\)
+                    jeweils einer Fibonacci-Zahl entspricht.
+                </Folgerung>
+                <Kasten name="Ausblick" farbe="#121212">
+                    Es bleibt also folgendes zu klären:
+                    <ol>
+                        <li>Mit welchem Divergenzwinkel bzw. Kreisteil \(\omega\) wachsen die Pflanzen überhaupt?</li>
+                        <li>
+                            Wie findet man Brüche mit kleinen Nennern in der Umgebung einer Zahl bzw. in der Umgebung
+                            des Kreisteils?
+                        </li>
+                    </ol>
+                    Dies wollen wir im nächsten Abschnitt genauer untersuchen.
                 </Kasten>
             </section>
         </section>
